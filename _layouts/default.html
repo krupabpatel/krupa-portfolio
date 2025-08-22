@@ -13,6 +13,11 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <a href="/" class="nav-brand">Krupa Patel</a>
                 <div class="nav-links">
                     <a href="#projects">Work</a>
@@ -21,6 +26,50 @@
             </nav>
         </div>
     </header>
+    
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+            <a href="#projects" class="mobile-menu-link">Work</a>
+            <a href="#contact" class="mobile-menu-link">Book Consultation</a>
+        </div>
+    </div>
     {{ content }}
+    
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        
+        // Open menu
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+        
+        // Close menu
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+        
+        // Close menu when clicking a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>

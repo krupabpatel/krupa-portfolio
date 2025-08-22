@@ -33,7 +33,7 @@
 - [x] Added sophisticated animations and visual effects
 - [x] Changed navbar to "Krupa Patel" and greeting to "Hi, I'm Krupa"
 - [x] Fixed hero section spacing and alignment issues
-- [x] Temporarily removed profile picture section (to be redesigned later)
+- [x] ~~Temporarily removed profile picture section (to be redesigned later)~~ Re-added profile picture
 - [x] Updated hero subtitle to reflect PM aspirations and consulting background
 - [x] Made subtitle italic for elegance
 - [x] Fixed hero text left alignment and width matching
@@ -43,14 +43,18 @@
 - [x] Linked button to LinkedIn profile (krupa-b-patel)
 - [x] Made LinkedIn icon scale with button text
 - [x] Added gradient fade to lavender accent bar
+- [x] Re-implemented profile picture with two-column hero layout
+- [x] Added mobile hamburger menu with slide-in navigation
+- [x] Fixed mobile responsive issues with hero section
+- [x] Addressed navbar overlapping hero text on mobile (partial fix)
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
 2. ~~Build simple HTML layout~~ ✅ Complete  
 3. ~~Add clean CSS styling~~ ✅ Complete
-4. **Profile Image Section** (postponed for redesign)
-   - Need to create a better layout for profile image
-   - Consider alternative placement or design approach
+4. **Profile Image Section** ✅ Complete
+   - Implemented two-column hero layout with profile image
+   - Added responsive mobile layout with proper scaling
 5. Configure Decap CMS for content management
 6. Add real project content and descriptions
 7. Create individual project pages
@@ -153,7 +157,7 @@
   - Animated rotating conic gradients in background
   - Floating geometric shapes (sand and sage only)
   - Lavender accent bar under main heading (fades to transparent)
-  - Left-aligned text layout (profile image temporarily removed)
+  - Two-column layout with text on left, profile image on right
   - Italic subtitle for professional elegance
   - LinkedIn Connect button with scaling icon
 - **Buttons**:

@@ -193,10 +193,11 @@ body {
 
 /* Hero section */
 .hero {
-    min-height: calc(100vh - 80px);
+    height: 70vh;
+    min-height: 500px;
+    max-height: 700px;
     display: flex;
     align-items: center;
-    padding: 100px 0 60px;
     margin-top: 80px;
     position: relative;
     overflow: hidden;
@@ -286,18 +287,63 @@ body {
     }
 }
 
-.hero-container {
+.hero-split {
     position: relative;
     z-index: 1;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     width: 100%;
-    text-align: left;
+    height: 100%;
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.hero-right {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 60px;
+    padding-right: 60px;
+}
+
+.hero-right .image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 70%;
+}
+
+.hero-right .image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 110%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background: linear-gradient(135deg, rgba(139, 149, 109, 0.35), rgba(228, 213, 183, 0.25));
+    border-radius: 55% 15% 55% 15%;
+    z-index: -1;
+}
+
+.hero-right img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 60% 10% 60% 10%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    display: block;
 }
 
 .hero-text {
-    max-width: 700px;
+    max-width: 600px;
 }
 
 .hero-text h1 {
@@ -637,14 +683,94 @@ body {
     border-color: var(--lavender);
 }
 
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--charcoal);
+    margin-bottom: 6px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:last-child {
+    margin-bottom: 0;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--cream);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 2000;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.mobile-menu-content {
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: var(--charcoal);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-link {
+    font-size: 18px;
+    color: var(--charcoal);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(43, 41, 34, 0.1);
+    transition: color 0.2s ease;
+}
+
+.mobile-menu-link:hover {
+    color: var(--sage);
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
     .container {
         padding: 0 40px;
     }
     
-    .hero-container {
-        gap: 80px;
+    .hero-left {
+        padding: 0 40px;
     }
     
     .nav-links {
@@ -655,31 +781,112 @@ body {
 @media (max-width: 768px) {
     .header {
         height: auto;
-        padding: 16px 0;
+        padding: 12px 0;
+        position: fixed;
+        width: 100%;
     }
     
     .nav {
-        flex-direction: column;
-        gap: 16px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0;
+        position: relative;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 0;
+    }
+    
+    .nav-brand {
+        font-size: 18px;
+        margin: 0;
     }
     
     .nav-links {
-        gap: 20px;
+        display: none;
     }
     
     .hero {
-        padding: 80px 0 60px;
-        margin-top: 100px;
+        height: auto;
+        min-height: auto;
+        margin-top: 0;
+        padding-top: 5rem;
+        display: flex;
+        flex-direction: column;
     }
     
-    .hero-container {
-        text-align: left;
+    .hero-split {
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        display: flex;
+    }
+    
+    .hero-left {
+        padding: 2rem 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        flex: 0 0 auto;
+    }
+    
+    .hero-right {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 1rem 1.25rem 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        min-height: 0;
+    }
+    
+    .hero-right .image-wrapper {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    .hero-right img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: clamp(2.25rem, 10vw, 3rem);
+        color: var(--charcoal);
+        margin-bottom: 2rem;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .hero-text h1::after {
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
     }
     
     .hero-text .subtitle {
         max-width: 100%;
-        margin: 0 0 25px 0;
-        font-size: 18px;
+        margin: 0 0 1.5rem 0;
+        font-size: 1.125rem;
     }
     
     .projects, .contact {
@@ -709,21 +916,38 @@ body {
         padding: 0 16px;
     }
     
-    .nav-links {
-        flex-direction: column;
-        gap: 16px;
+    .nav-brand {
+        font-size: 16px;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+    }
+    
+    .hero {
+        margin-top: 0;
+        padding-top: 4.5rem;
+        min-height: auto;
+    }
+    
+    .hero-left {
+        padding: 1.5rem 1rem 1rem;
+    }
+    
+    .hero-right {
+        flex: 0 0 auto;
+        min-height: 0;
+        padding: 0.5rem 1rem 2.5rem;
     }
     
     .hero-text h1 {
-        font-size: 36px;
+        font-size: 2rem;
+        display: inline-block;
+        position: relative;
     }
     
     .hero-text .subtitle {
-        font-size: 18px;
-    }
-    
-    .profile-image {
-        height: 320px;
+        font-size: 1rem;
     }
     
     .section-title {
