@@ -29,16 +29,36 @@
 - [x] Implemented sophisticated typography system
 - [x] Created wide, full-width layout design
 - [x] Added Funnel Display as body font paired with Rinjani Sans
+- [x] Refined color system with lavender as accent-only (not mixed in gradients)
+- [x] Added sophisticated animations and visual effects
+- [x] Changed navbar to "Krupa Patel" and greeting to "Hi, I'm Krupa"
+- [x] Fixed hero section spacing and alignment issues
+- [x] Temporarily removed profile picture section (to be redesigned later)
+- [x] Updated hero subtitle to reflect PM aspirations and consulting background
+- [x] Made subtitle italic for elegance
+- [x] Fixed hero text left alignment and width matching
+- [x] Made lavender bar automatically match title width (inline-block)
+- [x] Added responsive scaling with clamp() for all hero elements
+- [x] Changed CTA button to "Connect" with LinkedIn icon
+- [x] Linked button to LinkedIn profile (krupa-b-patel)
+- [x] Made LinkedIn icon scale with button text
+- [x] Added gradient fade to lavender accent bar
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
 2. ~~Build simple HTML layout~~ ✅ Complete  
 3. ~~Add clean CSS styling~~ ✅ Complete
-4. Add Krupa's profile image to `/assets/images/profile.jpg`
+4. **Profile Image Section** (postponed for redesign)
+   - Need to create a better layout for profile image
+   - Consider alternative placement or design approach
 5. Configure Decap CMS for content management
-6. Test content editing workflow
-7. Add real project content and descriptions
-8. Optimize for GitHub Pages deployment
+6. Add real project content and descriptions
+7. Create individual project pages
+8. Add About section with more details
+9. Implement contact form functionality
+10. Test content editing workflow
+11. Optimize for GitHub Pages deployment
+12. Add SEO meta tags and Open Graph data
 
 ## Commands to Remember
 ### Setup (run once)
@@ -132,8 +152,10 @@
 - **Hero Section**:
   - Animated rotating conic gradients in background
   - Floating geometric shapes (sand and sage only)
-  - Lavender accent bar under main heading
-  - Floating animation on profile image with layered frames
+  - Lavender accent bar under main heading (fades to transparent)
+  - Left-aligned text layout (profile image temporarily removed)
+  - Italic subtitle for professional elegance
+  - LinkedIn Connect button with scaling icon
 - **Buttons**:
   - Pill-shaped with smooth cubic-bezier transitions
   - Expanding overlay effects on hover
