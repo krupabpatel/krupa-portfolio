@@ -83,11 +83,27 @@
 ## Design System Implemented
 
 ### Color Palette (Earthy Tones)
-- **Main**: Sand (#E4D5B7) - warm, sophisticated primary color
-- **Secondary**: Sage (#8B956D) - deep, natural green for headings
-- **Accent**: Lavender (#A594B8) - refined purple for buttons
-- **Background**: Cream (#FBF9F4) - warm, natural background
-- **Text**: Charcoal (#2B2922) - rich dark text color
+- **Primary (Sand/Yellow-Tan)**: #E4D5B7 - Main brand color, warm and inviting
+- **Secondary (Sage/Leaf Green)**: #8B956D - Natural, grounding color for key elements  
+- **Accent (Lavender)**: #A594B8 - Used SPARINGLY for contrast and highlights only
+- **Background**: Cream (#FBF9F4) - Warm, natural background
+- **Text**: Charcoal (#2B2922) - Rich dark text color
+- **Supporting Colors**: 
+  - Warm Gray (#6B645C) - Subtle text
+  - Sage Dark (#6B7752) - Darker green variant
+  - Sand Dark (#D4C4A0) - Deeper sand tone
+
+### Color Usage Rules (IMPORTANT)
+- **Lavender is strictly for accents** - Never mixed in gradients with sand/sage
+- **Sand and sage can be paired together** in gradients and combinations
+- **Lavender usage limited to**:
+  - Navigation hover underlines
+  - Hero heading accent bar  
+  - Project card top accent on hover
+  - CTA button (Book Consultation)
+  - Contact section secondary button hover state
+- **Primary buttons**: Sand background → Sage on hover (no lavender)
+- **Secondary buttons**: Sage background → Lavender on hover (accent contrast)
 
 ### Typography System
 - **Headlines & Titles**: Rinjani Sans (local fonts)
@@ -111,6 +127,29 @@
 - **Dramatic spacing** and generous padding
 - **Sophisticated grid systems** for projects and content
 - **Mobile-responsive** with maintained visual impact
+
+### Visual Design Elements & Animations
+- **Hero Section**:
+  - Animated rotating conic gradients in background
+  - Floating geometric shapes (sand and sage only)
+  - Lavender accent bar under main heading
+  - Floating animation on profile image with layered frames
+- **Buttons**:
+  - Pill-shaped with smooth cubic-bezier transitions
+  - Expanding overlay effects on hover
+  - Dynamic shadows and scale transforms
+- **Project Cards**:
+  - Shimmer effect with sliding gradient on hover
+  - Lavender accent strip that scales in on hover
+  - Staggered fade-in animations on load
+  - Enhanced depth with multiple shadow layers
+- **Typography Effects**:
+  - Shadow effects on section titles for depth
+  - Decorative elements using data-text attributes
+- **Background Patterns**:
+  - Subtle diagonal stripe overlays
+  - Multiple layered radial gradients
+  - Floating orbs with single-color gradients (no color mixing)
 
 ### Current Development Command
 - `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --force_polling`
