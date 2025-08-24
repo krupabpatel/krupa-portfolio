@@ -106,6 +106,16 @@
 
 ## Design System Implemented
 
+### CSS Unit Guidelines (IMPORTANT)
+- **Use rem units for most measurements** - Relative to root, more predictable
+- **Use em units for media queries** - Better browser support
+- **Keep 1-2px borders as px** - These are meant to be hairline borders
+- **Base font size**: 1rem = 16px (browser default)
+- **Conversion reference**: Divide px by 16 to get rem value
+- **Media queries**: Use em units (e.g., 48em for 768px breakpoint)
+- **All clamp() functions converted to rem** for consistency
+- This ensures proper scaling and accessibility across all devices
+
 ### Color Palette (Earthy Tones)
 - **Primary (Sand/Yellow-Tan)**: #E4D5B7 - Main brand color, warm and inviting
 - **Secondary (Sage/Leaf Green)**: #8B956D - Natural, grounding color for key elements  
