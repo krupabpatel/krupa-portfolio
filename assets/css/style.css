@@ -812,10 +812,12 @@ body {
     .hero {
         height: auto;
         min-height: auto;
+        max-height: none;
         margin-top: 0;
         padding-top: 5rem;
         display: flex;
         flex-direction: column;
+        overflow: visible;
     }
     
     .hero-split {
@@ -841,18 +843,19 @@ body {
     .hero-right {
         flex: 0 0 auto;
         width: 100%;
-        padding: 1rem 1.25rem 3rem;
+        padding: 5% 1.25rem 10%;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
         z-index: 2;
-        min-height: 0;
+        min-height: auto;
     }
     
     .hero-right .image-wrapper {
         width: 80%;
         max-width: 18.75rem;
+        margin: auto 0;
     }
     
     .hero-right img {
@@ -937,7 +940,7 @@ body {
     .hero-right {
         flex: 0 0 auto;
         min-height: 0;
-        padding: 0.5rem 1rem 2.5rem;
+        padding: 3% 1rem 8%;
     }
     
     .hero-text h1 {

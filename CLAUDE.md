@@ -47,6 +47,10 @@
 - [x] Added mobile hamburger menu with slide-in navigation
 - [x] Fixed mobile responsive issues with hero section
 - [x] Addressed navbar overlapping hero text on mobile (partial fix)
+- [x] Fixed mobile profile image cutoff issue
+- [x] Set overflow: visible on hero section for mobile
+- [x] Adjusted mobile image container spacing with percentage-based padding
+- [x] Converted all CSS units to rem/em for better responsiveness
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
