@@ -1,7 +1,10 @@
 title: "Krupa's Portfolio"
 description: Personal portfolio website
-baseurl: "/krupa-portfolio"
-url: "https://krupabpatel.github.io"
+baseurl: ""  # Will be set dynamically based on environment
+url: ""      # Will be set dynamically based on environment
+
+# GitHub Pages settings (only used in production)
+repository: "krupabpatel/krupa-portfolio"
 
 # Build settings
 markdown: kramdown

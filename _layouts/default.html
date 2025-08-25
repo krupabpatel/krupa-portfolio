@@ -90,6 +90,41 @@
                 document.body.style.overflow = '';
             }
         });
+
+        // Mobile scroll-triggered animations using Intersection Observer
+        function initScrollAnimations() {
+            // Only run on mobile devices (touch devices without hover)
+            const isMobile = !window.matchMedia('(hover: hover)').matches && 
+                           window.matchMedia('(pointer: coarse)').matches;
+            
+            if (!isMobile) return;
+            
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Card is entering viewport - add visible class
+                        entry.target.classList.add('scroll-visible');
+                    } else {
+                        // Card is leaving viewport - remove visible class (bidirectional)
+                        entry.target.classList.remove('scroll-visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,  // Trigger when 15% of the card is visible
+                rootMargin: '0px 0px -50px 0px'  // Trigger slightly before the card is fully visible
+            });
+            
+            // Observe all project cards
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+        
+        // Initialize scroll animations after DOM is loaded
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
     </script>
 </body>
 </html>

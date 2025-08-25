@@ -562,6 +562,61 @@ body {
     }
 }
 
+/* Mobile scroll-triggered animations */
+@media (hover: none) and (pointer: coarse) {
+    /* Reset initial animations on mobile */
+    .project-card:nth-child(1),
+    .project-card:nth-child(2),
+    .project-card:nth-child(3) {
+        animation: none;
+    }
+    
+    /* Initial hidden state for mobile scroll animations */
+    .project-card {
+        opacity: 0;
+        transform: translateY(1.875rem);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Visible state when scrolled into view */
+    .project-card.scroll-visible {
+        opacity: 1;
+        transform: translateY(-0.5rem) scale(1.02);
+        box-shadow: 
+            0 1.25rem 2.5rem rgba(43, 41, 34, 0.12),
+            0 0.5rem 1rem rgba(139, 149, 109, 0.08);
+        background: linear-gradient(135deg, var(--cream) 0%, white 50%, var(--cream) 100%);
+    }
+    
+    /* Shimmer effect when visible */
+    .project-card.scroll-visible::before {
+        transform: translateX(100%);
+    }
+    
+    /* Lavender accent bar when visible */
+    .project-card.scroll-visible::after {
+        transform: scaleX(1);
+    }
+    
+    /* Title color change when visible */
+    .project-card.scroll-visible h3 {
+        color: var(--sage-dark);
+    }
+    
+    /* Staggered animation delays */
+    .project-card:nth-child(1).scroll-visible {
+        transition-delay: 0.1s;
+    }
+    
+    .project-card:nth-child(2).scroll-visible {
+        transition-delay: 0.2s;
+    }
+    
+    .project-card:nth-child(3).scroll-visible {
+        transition-delay: 0.3s;
+    }
+}
+
 .project-card h3 {
     font-family: 'Rinjani Sans', serif;
     font-size: clamp(1.75rem, 3vw, 2.5rem);

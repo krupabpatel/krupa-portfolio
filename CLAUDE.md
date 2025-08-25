@@ -91,6 +91,13 @@
   - Removed extra clamp(1rem, 3vh, 2rem) spacing that was creating unwanted gap
   - Maintained mobile responsive spacing which was already working correctly
   - Ensures clean, professional appearance with proper navbar-to-content flow
+- [x] **Mobile Scroll-Triggered Animations**
+  - Implemented Intersection Observer API for scroll-based project card animations
+  - Mobile-only detection using CSS media queries `@media (hover: none) and (pointer: coarse)`
+  - Bidirectional animations that trigger when scrolling cards into/out of viewport
+  - Full hover effects applied on scroll: shimmer, lavender accent bar, shadows, scaling
+  - Staggered animation delays maintain elegant timing from desktop version
+  - Seamless transition between desktop hover and mobile scroll interactions
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
@@ -119,7 +126,8 @@
 - `/opt/homebrew/opt/ruby/bin/bundle exec jekyll serve --livereload` - Run with auto-refresh
 
 ### Alternative (if bundle install fails)
-- `/opt/homebrew/opt/ruby/bin/jekyll serve --force_polling` - Run with direct Jekyll (no live reload)
+- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --config _config.yml,_config_dev.yml --force_polling` - Run with direct Jekyll for local development
+- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll build --config _config.yml,_config_prod.yml` - Build for GitHub Pages
 - `python3 -m http.server 4000` - Simple HTTP server for static files
 
 ### Ruby Setup Notes
@@ -232,8 +240,17 @@
   - Floating orbs with single-color gradients (no color mixing)
 
 ### Current Development Command
-- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --force_polling`
-- Site accessible at http://127.0.0.1:4000/
+- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --config _config.yml,_config_dev.yml --force_polling`
+- Site accessible at http://127.0.0.1:4000/ (local development)
+- GitHub Pages: https://krupabpatel.github.io/krupa-portfolio/ (production)
+
+### Dynamic Configuration System
+- **_config.yml**: Base configuration with empty baseurl/url
+- **_config_dev.yml**: Local development overrides (baseurl: "", url: "http://127.0.0.1:4000")  
+- **_config_prod.yml**: GitHub Pages overrides (baseurl: "/krupa-portfolio", url: "https://krupabpatel.github.io")
+- **Build commands**:
+  - Local: `--config _config.yml,_config_dev.yml`
+  - Production: `--config _config.yml,_config_prod.yml`
 
 ## Notes
 - Keep design clean and minimal like the demo site
