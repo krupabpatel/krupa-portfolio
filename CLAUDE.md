@@ -127,7 +127,7 @@
 
 ### Alternative (if bundle install fails)
 - `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --config _config.yml,_config_dev.yml --force_polling` - Run with direct Jekyll for local development
-- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll build --config _config.yml,_config_prod.yml` - Build for GitHub Pages
+- `/opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll build` - Build for production (GitHub Pages builds automatically)
 - `python3 -m http.server 4000` - Simple HTTP server for static files
 
 ### Ruby Setup Notes
@@ -245,12 +245,11 @@
 - GitHub Pages: https://krupabpatel.github.io/krupa-portfolio/ (production)
 
 ### Dynamic Configuration System
-- **_config.yml**: Base configuration with empty baseurl/url
+- **_config.yml**: Default GitHub Pages configuration (baseurl: "/krupa-portfolio", url: "https://krupabpatel.github.io")
 - **_config_dev.yml**: Local development overrides (baseurl: "", url: "http://127.0.0.1:4000")  
-- **_config_prod.yml**: GitHub Pages overrides (baseurl: "/krupa-portfolio", url: "https://krupabpatel.github.io")
 - **Build commands**:
-  - Local: `--config _config.yml,_config_dev.yml`
-  - Production: `--config _config.yml,_config_prod.yml`
+  - Local: `--config _config.yml,_config_dev.yml` (overrides for clean URLs)
+  - Production: Automatic GitHub Pages build uses `_config.yml` directly
 
 ## Notes
 - Keep design clean and minimal like the demo site

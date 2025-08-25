@@ -1,9 +1,9 @@
 title: "Krupa's Portfolio"
 description: Personal portfolio website
-baseurl: ""  # Will be set dynamically based on environment
-url: ""      # Will be set dynamically based on environment
+baseurl: "/krupa-portfolio"  # GitHub Pages default - overridden in _config_dev.yml for local
+url: "https://krupabpatel.github.io"  # GitHub Pages default - overridden in _config_dev.yml for local
 
-# GitHub Pages settings (only used in production)
+# GitHub Pages settings
 repository: "krupabpatel/krupa-portfolio"
 
 # Build settings
