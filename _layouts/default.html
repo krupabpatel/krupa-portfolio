@@ -27,7 +27,6 @@
                 <div class="nav-links">
                     <a href="{{ '/' | relative_url }}#projects">Projects</a>
                     <a href="{{ '/' | relative_url }}#resume">Resume</a>
-                    <a href="{{ '/' | relative_url }}#contact" class="btn-contact">Book Consultation</a>
                 </div>
             </nav>
         </div>
@@ -38,7 +37,6 @@
             <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
             <a href="{{ '/' | relative_url }}#projects" class="mobile-menu-link">Projects</a>
             <a href="{{ '/' | relative_url }}#resume" class="mobile-menu-link">Resume</a>
-            <a href="{{ '/' | relative_url }}#contact" class="mobile-menu-link">Book Consultation</a>
         </div>
     </div>
     <div class="page-container">
@@ -158,6 +156,36 @@
         // Initialize touch animations after DOM is loaded
         document.addEventListener('DOMContentLoaded', initTouchAnimations);
 
+        // Scroll-triggered animations for all sections
+        function initScrollAnimations() {
+            // Only run on desktop (devices with hover)
+            const isDesktop = window.matchMedia('(hover: hover)').matches;
+            if (!isDesktop) return;
+            
+            const animatedElements = document.querySelectorAll('.project-card, .resume-section, .timeline-item, .skill-category');
+            
+            if (!animatedElements.length) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% visible
+                rootMargin: '0px 0px -50px 0px' // Start animation 50px before entering viewport
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Initialize scroll animations after DOM is loaded
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
         // Handle browser back/forward button - apply fade in animation
         window.addEventListener('pageshow', (event) => {
             const pageContent = document.querySelector('.page-content');
@@ -206,11 +234,15 @@
             // Check legacy refresh detection
             const isLegacyRefresh = performance.navigation && performance.navigation.type === 1;
             
-            // Apply fade-in if coming from ANY page on the same site (not refresh or direct access)
+            // Check if this is same-page navigation (e.g., clicking "Krupa Patel" on homepage)
+            const isSamePage = referrer && referrer.split('#')[0] === window.location.href.split('#')[0];
+            
+            // Apply fade-in if coming from ANY page on the same site (not refresh, direct access, or same-page)
             if (referrer && 
                 referrer.includes(window.location.hostname) && 
                 !isRefresh && 
-                !isLegacyRefresh) {
+                !isLegacyRefresh &&
+                !isSamePage) {
                 
                 // Start with fade-in position (invisible)
                 pageContent.style.transition = 'none';
@@ -266,6 +298,39 @@
                 // Skip same-page anchor links
                 if (href.startsWith('#')) return;
                 
+                // Also skip anchor links that are to the same page (e.g., /#projects, /krupa-portfolio/#projects)
+                if (href.includes('#')) {
+                    const [urlPath, anchor] = href.split('#');
+                    const currentPath = window.location.pathname;
+                    // If the path part matches current page (or is root), treat as same-page anchor
+                    if (urlPath === currentPath || urlPath === '' || urlPath === '/') {
+                        return;
+                    }
+                }
+                
+                // Skip navigation to the same page (e.g., clicking "Krupa Patel" when already on homepage)
+                const currentPath = window.location.pathname;
+                let targetPath = href;
+                
+                // Handle relative URLs - convert to absolute path
+                if (href.startsWith('./')) {
+                    targetPath = href.substring(2);
+                } else if (!href.startsWith('/') && !href.startsWith('http')) {
+                    targetPath = '/' + href;
+                }
+                
+                // Normalize paths for comparison (remove trailing slashes, handle index.html)
+                const normalizePath = (path) => {
+                    if (path.endsWith('/')) path = path.slice(0, -1);
+                    if (path.endsWith('/index.html')) path = path.replace('/index.html', '');
+                    if (path === '') path = '/';
+                    return path;
+                };
+                
+                if (normalizePath(currentPath) === normalizePath(targetPath)) {
+                    return; // Skip animation for same page navigation
+                }
+                
                 // Apply fade-out to ANY internal page navigation
                 const pageContent = document.querySelector('.page-content');
                 if (pageContent) {
@@ -283,12 +348,57 @@
             });
         }
 
+        // Enhanced smooth scrolling for anchor links with navbar offset
+        function initSmoothScrolling() {
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                if (!href) return;
+                
+                // Check if it's an anchor link (starts with # or contains #)
+                let targetId = '';
+                if (href.startsWith('#')) {
+                    targetId = href.substring(1);
+                } else if (href.includes('#')) {
+                    const [urlPath, anchor] = href.split('#');
+                    const currentPath = window.location.pathname;
+                    // Only handle if it's the same page
+                    if (urlPath === currentPath || urlPath === '' || urlPath === '/') {
+                        targetId = anchor;
+                    }
+                }
+                
+                if (targetId) {
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Fast, smooth native scroll
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if (mobileMenu && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                }
+            });
+        }
+
         // Initialize fade-in immediately (don't wait for DOMContentLoaded)
         initPageTransitions();
         
-        // Initialize exit animations after DOM is ready
+        // Initialize exit animations and smooth scrolling after DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             initExitAnimations();
+            initSmoothScrolling();
         });
     </script>
 </body>

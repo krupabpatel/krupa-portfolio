@@ -823,3 +823,84 @@ setTimeout(() => pageContent.style.opacity = '1', 10);
 - **Fade-in delay**: 10ms for consistency
 - **Cleanup**: 400ms to remove inline styles
 - **Easing**: ease-in-out for natural motion
+
+## Navigation and UX Improvements (August 2025)
+
+### Overview
+Series of critical navigation fixes and user experience enhancements that resolved blank screen issues, improved scrolling behavior, and created a unified animation system across the portfolio.
+
+### Changes Made
+
+**1. Fixed Navbar Navigation Issues**
+- **Blank Screen Bug Resolution**: Fixed navbar links causing blank screens due to fade animation conflicts
+- **Anchor Link Detection**: Enhanced JavaScript to properly identify same-page anchor links (#projects, #resume)
+- **Same-Page Navigation Logic**: Improved path comparison to skip animations for same-page refreshes
+- **Book Consultation Removal**: Cleaned up navbar by removing unused consultation button from both desktop and mobile menus
+
+**2. Enhanced Smooth Scrolling System**
+- **Native Browser Scrolling**: Implemented optimized smooth scrolling using `scrollIntoView()` with `behavior: 'smooth'`
+- **CSS Smooth Behavior**: Added `scroll-behavior: smooth` to HTML element with accessibility support
+- **Mobile Menu Integration**: Automatic mobile hamburger menu closure after anchor link clicks
+- **Performance Optimized**: Removed complex custom scroll implementations in favor of native browser optimization
+
+**3. Scroll-Triggered Animation System (MAJOR ENHANCEMENT)**
+- **Unified Architecture**: Both project cards and resume sections now use consistent scroll-triggered animations
+- **Intersection Observer Implementation**: Professional viewport detection system that triggers animations at 10% visibility
+- **Initial Hidden State**: All animated elements start with `opacity: 0, translateY: 30px` until scrolled into view
+- **Staggered Animation Timing**: Beautiful cascading reveals with progressive delays creating cinematic entrance effects
+- **Desktop-Only Animations**: Scroll animations disabled on mobile devices for performance, elements show normally
+- **One-Time Triggers**: Each element animates only once when first revealed, then observer stops watching it
+- **Performance Optimized**: Single Intersection Observer handles all animated elements efficiently
+
+**4. Animation Sequence Details**
+- **Project Cards**: 0.1s, 0.2s, 0.3s delays when scrolled into viewport
+- **Resume Sections**: Experience, Education, Skills sections with 0.1s, 0.2s, 0.3s delays
+- **Timeline Items**: Job/education entries with 0.1s, 0.2s, 0.3s delays within each section
+- **Skill Categories**: All 4 skill boxes with 0.1s, 0.2s, 0.3s, 0.4s progressive delays
+
+**5. Same-Page Navigation Fixes**
+- **Fade-Out Logic**: Enhanced to detect same-page navigation and skip animations appropriately
+- **Fade-In Logic**: Added same-page detection to prevent unwanted entrance animations
+- **Path Normalization**: Intelligent URL comparison handling trailing slashes, relative paths, and index.html
+- **"Krupa Patel" Link**: Now properly refreshes without animation when clicked on homepage
+
+**6. Hero Section Content Update**
+- **Greeting Enhancement**: Updated from "Hi, I'm Krupa." to "Hi, I'm Krupa!" for more enthusiastic, welcoming tone
+
+### Technical Specifications
+
+**Scroll Animation System**:
+```javascript
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+```
+
+**CSS Animation Structure**:
+```css
+.element {
+    opacity: 0;
+    transform: translateY(1.875rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.element.animate-in:nth-child(1) {
+    animation: fade-in-up 0.6s ease-out 0.1s both;
+}
+```
+
+### User Experience Benefits
+- **Eliminated Navigation Issues**: No more blank screens or broken navbar links
+- **Professional Animation Flow**: Smooth, staggered reveals that feel polished and intentional
+- **Performance Optimized**: Animations only where they enhance UX, disabled on mobile for speed
+- **Accessibility Compliant**: Respects `prefers-reduced-motion` for users who prefer less animation
+- **Consistent Behavior**: Unified animation system across all portfolio sections
+- **Smooth Scrolling**: Clean, fast navigation between sections without jarring jumps
