@@ -51,6 +51,19 @@
 - [x] Set overflow: visible on hero section for mobile
 - [x] Adjusted mobile image container spacing with percentage-based padding
 - [x] Converted all CSS units to rem/em for better responsiveness
+- [x] **Enhanced Hero Section Interactivity**
+  - Added Contact button with mail icon alongside LinkedIn Connect button
+  - Implemented smooth profile picture hover scaling with enhanced shadow
+  - Created layered 3D hover effect for profile decoration with independent timing
+  - Added subtle opacity breathing animation to profile decoration background
+  - Improved button text positioning with slight vertical adjustment
+- [x] **Mobile UX Improvements** 
+  - Fixed hero title spacing on mobile to match proportional bottom spacing
+  - Centered Connect/Contact buttons on mobile screens for better alignment
+- [x] **Background Animation Refinements**
+  - Replaced problematic rotating gradient that caused harsh edges
+  - Implemented smooth static gradient background with radial overlays
+  - Maintained elegant visual depth without distracting movement
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
