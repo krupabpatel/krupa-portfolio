@@ -160,16 +160,16 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-links a {
-    color: var(--charcoal);
+    color: var(--sage);
     text-decoration: none;
     font-family: 'Funnel Display', sans-serif;
     font-weight: 500;
     font-size: 0.9375rem;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
     position: relative;
     white-space: nowrap;
     display: inline-block;
@@ -179,7 +179,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--sage);
+    color: var(--lavender);
 }
 
 .nav-links a:not(.btn-contact)::after {
@@ -195,6 +195,31 @@ body {
 
 .nav-links a:not(.btn-contact):hover::after {
     width: 100%;
+}
+
+/* Navbar icon links */
+.nav-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+    vertical-align: baseline;
+    height: 1.2em; /* Match text line-height exactly */
+}
+
+.nav-icon {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    color: var(--sage);
+    transition: color 0.3s ease;
+}
+
+.nav-icon-link:hover .nav-icon {
+    color: var(--lavender);
 }
 
 .btn-contact {
@@ -1469,6 +1494,196 @@ body {
     
     .projects, .contact {
         padding: clamp(2.5rem, 7vw, 4rem) 0;
+    }
+}
+
+/* Footer section */
+.footer {
+    position: relative;
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 3vw, 2.5rem);
+    background: 
+        radial-gradient(ellipse at top right, var(--sage) 0%, var(--sage-dark) 70%);
+    color: white;
+    text-align: center;
+}
+
+.footer-content {
+    position: relative;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.footer-branding {
+    margin-bottom: clamp(2rem, 3vw, 2.5rem);
+}
+
+.footer-title {
+    font-family: 'Rinjani Sans', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    color: white;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    letter-spacing: -0.01em;
+    line-height: 0.9;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0.04em;
+    left: 0.04em;
+    color: var(--sand);
+    opacity: 1;
+    z-index: -1;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.footer-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.footer-actions {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.25rem);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: clamp(2rem, 3vw, 2.5rem);
+    flex-wrap: wrap;
+}
+
+.footer-btn {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%),
+        linear-gradient(45deg, rgba(228, 213, 183, 0.1) 0%, rgba(165, 148, 184, 0.05) 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: clamp(0.75rem, 1.8vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    font-weight: 600;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 3px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, var(--sand) 0%, var(--sand-dark) 100%);
+    transition: width 0.4s ease;
+    z-index: -1;
+    border-radius: 3.125rem;
+}
+
+.footer-btn:hover::before {
+    width: 100%;
+}
+
+.footer-btn:hover {
+    color: var(--charcoal);
+    border-color: var(--sand);
+    transform: translateY(-0.25rem) scale(1.08);
+    box-shadow: 
+        0 1rem 3rem rgba(228, 213, 183, 0.4),
+        0 0.5rem 1.5rem rgba(228, 213, 183, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+}
+
+.footer-btn .linkedin-icon,
+.footer-btn .mail-icon {
+    width: clamp(1rem, 1.8vw, 1.125rem);
+    height: clamp(1rem, 1.8vw, 1.125rem);
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+.footer-signature {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    letter-spacing: 0.025em;
+}
+
+/* Mobile footer adjustments */
+@media (max-width: 48em) {
+    .footer {
+        padding: clamp(3rem, 8vw, 4rem) 0 clamp(1.5rem, 4vw, 2rem);
+    }
+    
+    .footer-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-btn {
+        width: 100%;
+        max-width: 20rem;
+        justify-content: center;
+    }
+    
+    .footer-shapes {
+        opacity: 0.6;
+    }
+    
+    /* Footer button touch animations for mobile */
+    .footer-btn {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+        box-shadow: none !important;
+    }
+    
+    .footer-btn::before {
+        width: 0 !important;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
+    
+    .footer-btn.touch-active {
+        color: var(--charcoal) !important;
+        border-color: var(--sand) !important;
+        transform: translateY(-0.1875rem) scale(1.05) !important;
+        box-shadow: 
+            0 0.75rem 2rem rgba(228, 213, 183, 0.25),
+            0 0.25rem 0.75rem rgba(228, 213, 183, 0.15) !important;
+    }
+    
+    .footer-btn.touch-active::before {
+        width: 100% !important;
+    }
+    
+    .footer-btn:hover {
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: none !important;
+    }
+    
+    .footer-btn:hover::before {
+        width: 0 !important;
     }
 }
 
