@@ -205,7 +205,7 @@ body {
     max-height: 43.75rem;
     display: flex;
     align-items: center;
-    margin-top: calc(var(--header-height) + clamp(1rem, 3vh, 2rem));
+    margin-top: var(--header-height);
     position: relative;
     overflow: hidden;
     background: 

@@ -85,6 +85,12 @@
   - Ensures hero text never gets cut off across all viewports, zoom levels, and content changes
   - Works with desktop (margin-top) and mobile (padding-top) layouts
   - Maintains responsive spacing ratios while preventing navbar overlap
+- [x] **Desktop Spacing Optimization**
+  - Fixed excessive gap between navbar and hero section on desktop view
+  - Simplified desktop hero positioning to use only var(--header-height)
+  - Removed extra clamp(1rem, 3vh, 2rem) spacing that was creating unwanted gap
+  - Maintained mobile responsive spacing which was already working correctly
+  - Ensures clean, professional appearance with proper navbar-to-content flow
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
