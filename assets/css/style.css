@@ -562,7 +562,7 @@ body {
     }
 }
 
-/* Mobile scroll-triggered animations */
+/* Mobile touch-triggered animations */
 @media (hover: none) and (pointer: coarse) {
     /* Reset initial animations on mobile */
     .project-card:nth-child(1),
@@ -571,16 +571,15 @@ body {
         animation: none;
     }
     
-    /* Initial hidden state for mobile scroll animations */
+    /* Default state - show cards normally without animation */
     .project-card {
-        opacity: 0;
-        transform: translateY(1.875rem);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 1;
+        transform: none;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    /* Visible state when scrolled into view */
-    .project-card.scroll-visible {
-        opacity: 1;
+    /* Active state when touched */
+    .project-card.touch-active {
         transform: translateY(-0.5rem) scale(1.02);
         box-shadow: 
             0 1.25rem 2.5rem rgba(43, 41, 34, 0.12),
@@ -588,32 +587,19 @@ body {
         background: linear-gradient(135deg, var(--cream) 0%, white 50%, var(--cream) 100%);
     }
     
-    /* Shimmer effect when visible */
-    .project-card.scroll-visible::before {
+    /* Shimmer effect when touched */
+    .project-card.touch-active::before {
         transform: translateX(100%);
     }
     
-    /* Lavender accent bar when visible */
-    .project-card.scroll-visible::after {
+    /* Lavender accent bar when touched */
+    .project-card.touch-active::after {
         transform: scaleX(1);
     }
     
-    /* Title color change when visible */
-    .project-card.scroll-visible h3 {
+    /* Title color change when touched */
+    .project-card.touch-active h3 {
         color: var(--sage-dark);
-    }
-    
-    /* Staggered animation delays */
-    .project-card:nth-child(1).scroll-visible {
-        transition-delay: 0.1s;
-    }
-    
-    .project-card:nth-child(2).scroll-visible {
-        transition-delay: 0.2s;
-    }
-    
-    .project-card:nth-child(3).scroll-visible {
-        transition-delay: 0.3s;
     }
 }
 

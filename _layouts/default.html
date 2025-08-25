@@ -91,8 +91,8 @@
             }
         });
 
-        // Mobile scroll-triggered animations using Intersection Observer
-        function initScrollAnimations() {
+        // Mobile touch-triggered animations
+        function initTouchAnimations() {
             // Only run on mobile devices (touch devices without hover)
             const isMobile = !window.matchMedia('(hover: hover)').matches && 
                            window.matchMedia('(pointer: coarse)').matches;
@@ -101,30 +101,28 @@
             
             const projectCards = document.querySelectorAll('.project-card');
             
-            // Create intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Card is entering viewport - add visible class
-                        entry.target.classList.add('scroll-visible');
-                    } else {
-                        // Card is leaving viewport - remove visible class (bidirectional)
-                        entry.target.classList.remove('scroll-visible');
-                    }
-                });
-            }, {
-                threshold: 0.15,  // Trigger when 15% of the card is visible
-                rootMargin: '0px 0px -50px 0px'  // Trigger slightly before the card is fully visible
-            });
-            
-            // Observe all project cards
             projectCards.forEach(card => {
-                observer.observe(card);
+                // Touch start - activate animation
+                card.addEventListener('touchstart', () => {
+                    card.classList.add('touch-active');
+                }, { passive: true });
+                
+                // Touch end - deactivate animation after delay
+                card.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        card.classList.remove('touch-active');
+                    }, 300); // Keep animation for 300ms after touch ends
+                }, { passive: true });
+                
+                // Touch cancel - deactivate animation
+                card.addEventListener('touchcancel', () => {
+                    card.classList.remove('touch-active');
+                }, { passive: true });
             });
         }
         
-        // Initialize scroll animations after DOM is loaded
-        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        // Initialize touch animations after DOM is loaded
+        document.addEventListener('DOMContentLoaded', initTouchAnimations);
     </script>
 </body>
 </html>
