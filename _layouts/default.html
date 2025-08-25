@@ -165,10 +165,28 @@
             const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
             if (isDev) console.log('Page transitions initialized - horizontal slides enabled, vertical slides disabled');
 
+            // Clear all animation classes to prevent conflicts
+            function clearAllAnimationClasses() {
+                const animationClasses = [
+                    'page-slide-enter-from-right',
+                    'page-slide-enter-from-left',
+                    'page-slide-enter-active',
+                    'page-slide-exit-to-left',
+                    'page-slide-exit-to-right'
+                ];
+                
+                animationClasses.forEach(cls => {
+                    pageContent.classList.remove(cls);
+                });
+            }
+
             // Set up page entry animation based on referrer or navigation
             function setupPageEntry() {
                 const referrer = document.referrer;
                 const currentPath = window.location.pathname;
+                
+                // Clear any existing animation classes first
+                clearAllAnimationClasses();
                 
                 // Only animate if there's a referrer (coming from another page within the site)
                 if (!referrer) {
@@ -216,16 +234,22 @@
                         slideDirection = 'left';
                     }
                     
+                    if (isDev) console.log('Applying page entry animation:', slideDirection, 'from referrer:', referrerPath);
+                    
                     // Apply entry animation
                     pageContent.classList.add('page-slide-enter-from-' + slideDirection);
                     
-                    // Trigger the slide-in animation
-                    setTimeout(() => {
+                    // Trigger the slide-in animation with a small delay to ensure the initial state is applied
+                    requestAnimationFrame(() => {
                         pageContent.classList.remove('page-slide-enter-from-' + slideDirection);
                         pageContent.classList.add('page-slide-enter-active');
-                    }, 50);
-                    
-                    if (isDev) console.log('Page entering from', slideDirection, 'referrer:', referrerPath);
+                        
+                        // Clean up animation classes after animation completes
+                        setTimeout(() => {
+                            clearAllAnimationClasses();
+                            if (isDev) console.log('Animation cleanup completed');
+                        }, 450); // Slightly longer than 0.4s animation duration
+                    });
                     
                 } catch (error) {
                     if (isDev) console.log('Error parsing referrer - skipping entry animation:', error);
