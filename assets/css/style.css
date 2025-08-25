@@ -562,7 +562,7 @@ body {
     }
 }
 
-/* Mobile touch-triggered animations */
+/* Mobile touch-triggered animations - higher specificity */
 @media (hover: none) and (pointer: coarse) {
     /* Reset initial animations on mobile */
     .project-card:nth-child(1),
@@ -602,32 +602,28 @@ body {
         color: var(--sage-dark);
     }
     
-    /* Disable desktop hover states on mobile */
+    /* Reset desktop hover states on mobile */
     .btn-primary:hover {
-        color: var(--charcoal) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: none !important;
+        color: var(--charcoal);
+        transform: translateY(-2px);
+        box-shadow: none;
     }
     
     .btn-primary:hover::before {
-        width: 0 !important;
+        width: 0;
     }
     
-    /* Hero button touch animations - same as hover effects but triggered by touch */
+    /* Hero button touch animations */
     .btn-primary {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        /* Ensure proper default state on mobile */
-        color: var(--charcoal) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: none !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .btn-primary::before {
-        width: 0 !important;
-        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .btn-primary.touch-active {
+    /* Touch active state - ultra-high specificity */
+    body .btn-primary.touch-active.touch-active {
         color: white !important;
         transform: translateY(-0.1875rem) scale(1.05) !important;
         box-shadow: 
@@ -635,38 +631,52 @@ body {
             0 0.25rem 0.75rem rgba(139, 149, 109, 0.2) !important;
     }
     
-    .btn-primary.touch-active::before {
+    body .btn-primary.touch-active.touch-active::before {
         width: 100% !important;
     }
+}
+
+/* Touch active states - global (outside media query for testing) */
+body .btn-primary.touch-active.touch-active {
+    color: white !important;
+    transform: translateY(-0.1875rem) scale(1.05) !important;
+    box-shadow: 
+        0 0.75rem 2rem rgba(139, 149, 109, 0.3),
+        0 0.25rem 0.75rem rgba(139, 149, 109, 0.2) !important;
+}
+
+body .btn-primary.touch-active.touch-active::before {
+    width: 100% !important;
+}
+
+body .hero-right .image-wrapper.touch-active.touch-active::before {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1.07) !important;
+}
+
+body .hero-right .image-wrapper.touch-active.touch-active img {
+    transform: scale(1.05) !important;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2) !important;
+}
     
-    /* Disable desktop hover states for profile picture on mobile */
-    .hero-right .image-wrapper:hover::before {
-        transform: translate(-50%, -50%) rotate(-5deg) !important;
-    }
-    
-    .hero-right .image-wrapper:hover img {
-        transform: scale(1) !important;
-        box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.1) !important;
-    }
-    
-    /* Profile picture touch animations - same as hover effects but triggered by touch */
+    /* Profile picture touch animations */
     .hero-right .image-wrapper {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .hero-right .image-wrapper::before {
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .hero-right .image-wrapper img {
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .hero-right .image-wrapper.touch-active::before {
+    /* Touch active state - ultra-high specificity */
+    body .hero-right .image-wrapper.touch-active.touch-active::before {
         transform: translate(-50%, -50%) rotate(-2deg) scale(1.07) !important;
     }
     
-    .hero-right .image-wrapper.touch-active img {
+    body .hero-right .image-wrapper.touch-active.touch-active img {
         transform: scale(1.05) !important;
         box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2) !important;
     }
