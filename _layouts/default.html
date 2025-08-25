@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="{{ '/assets/fonts/Rinjani.otf' | relative_url }}" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/RinjaniSemibold.otf' | relative_url }}" as="font" type="font/otf" crossorigin>
+    <!-- Preload profile image -->
+    <link rel="preload" href="{{ '/assets/images/profile.jpg' | relative_url }}" as="image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">

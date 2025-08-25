@@ -64,6 +64,13 @@
   - Replaced problematic rotating gradient that caused harsh edges
   - Implemented smooth static gradient background with radial overlays
   - Maintained elegant visual depth without distracting movement
+- [x] **GitHub Pages Deployment & Asset Loading Fixes**
+  - Fixed Jekyll compatibility by switching to github-pages gem
+  - Corrected baseurl configuration for GitHub Pages subdirectory deployment
+  - Updated all asset paths to use Jekyll's relative_url filter
+  - Resolved font loading issues by removing spaces from font filenames
+  - Added font and image preloading to prevent flash of unstyled content
+  - Optimized font-display strategy to reduce layout shifts
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
