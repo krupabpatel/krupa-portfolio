@@ -161,6 +161,17 @@
   - **Fixed GitHub Pages 404 Error**: Corrected "Back to Projects" link using Jekyll relative_url filter
   - **Comprehensive Link Audit**: Verified all navigation links properly use Jekyll filters for GitHub Pages compatibility
   - **Cross-Environment Testing**: Confirmed fixes work in both local development and GitHub Pages deployment
+- [x] **Dynamic Media Carousel System (MAJOR FEATURE)**
+  - **Multi-Media Support**: Images, videos, and Figma embeds with proper responsive handling
+  - **Absolute Positioning Architecture**: Fixed content cropping issues with overlay-based slide system
+  - **Mobile-Optimized Design**: Proper viewport constraints (50vh desktop, 40vh mobile) with object-fit: contain
+  - **Professional Navigation**: Arrow buttons and dot indicators positioned outside carousel frame
+  - **Responsive Typography**: Proportionally scaling captions using clamp() functions
+  - **Clean Visual Design**: Removed shadows from media, maintained frame shadows, proper spacing hierarchy
+  - **Template Integration**: Complete front matter schema for Decap CMS with comprehensive examples
+  - **Consistent Spacing**: Uniform margins between summary, carousel, and document links sections
+  - **Vertical Alignment**: Media and captions properly centered within carousel container
+  - **Performance Optimized**: Lazy loading, preload metadata, smooth transitions with GPU acceleration
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
