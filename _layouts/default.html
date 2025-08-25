@@ -103,70 +103,50 @@
             const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
             if (isDev) console.log('Mobile touch animations initialized');
             
-            // Project cards - bidirectional animations
+            // Get all animatable elements
             const projectCards = document.querySelectorAll('.project-card');
-            
-            projectCards.forEach(card => {
-                // Touch start - activate animation
-                card.addEventListener('touchstart', () => {
-                    card.classList.add('touch-active');
-                }, { passive: true });
-                
-                // Touch end - immediately revert animation (bidirectional)
-                card.addEventListener('touchend', () => {
-                    card.classList.remove('touch-active');
-                }, { passive: true });
-                
-                // Touch cancel - immediately revert animation
-                card.addEventListener('touchcancel', () => {
-                    card.classList.remove('touch-active');
-                }, { passive: true });
-            });
-            
-            // Hero buttons - same touch animations as project cards
             const heroButtons = document.querySelectorAll('.hero-buttons .btn-primary');
-            const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-            if (isDev) console.log('Found', heroButtons.length, 'hero buttons');
-            
-            heroButtons.forEach((button, index) => {
-                // Touch start - activate animation
-                button.addEventListener('touchstart', () => {
-                    if (isDev) console.log('Touch start on button', index);
-                    button.classList.add('touch-active');
-                }, { passive: true });
-                
-                // Touch end - immediately revert animation (bidirectional)
-                button.addEventListener('touchend', () => {
-                    if (isDev) console.log('Touch end on button', index);
-                    button.classList.remove('touch-active');
-                }, { passive: true });
-                
-                // Touch cancel - immediately revert animation
-                button.addEventListener('touchcancel', () => {
-                    if (isDev) console.log('Touch cancel on button', index);
-                    button.classList.remove('touch-active');
-                }, { passive: true });
-            });
-            
-            // Profile picture - same touch animations as hover effects
             const profileImage = document.querySelector('.hero-right .image-wrapper');
             
-            if (profileImage) {
-                // Touch start - activate animation
-                profileImage.addEventListener('touchstart', () => {
-                    profileImage.classList.add('touch-active');
-                }, { passive: true });
-                
-                // Touch end - immediately revert animation (bidirectional)
-                profileImage.addEventListener('touchend', () => {
-                    profileImage.classList.remove('touch-active');
-                }, { passive: true });
-                
-                // Touch cancel - immediately revert animation
-                profileImage.addEventListener('touchcancel', () => {
-                    profileImage.classList.remove('touch-active');
-                }, { passive: true });
+            // Collect all animatable elements
+            const allAnimatableElements = [
+                ...projectCards,
+                ...heroButtons,
+                ...(profileImage ? [profileImage] : [])
+            ];
+            
+            if (isDev) console.log('Found', allAnimatableElements.length, 'animatable elements');
+            
+            // Function to reset all animations
+            function resetAllAnimations() {
+                allAnimatableElements.forEach(element => {
+                    element.classList.remove('touch-active');
+                });
             }
+            
+            // Add touch listeners to each animatable element
+            allAnimatableElements.forEach((element, index) => {
+                element.addEventListener('touchstart', (e) => {
+                    e.stopPropagation(); // Prevent document touchstart
+                    if (isDev) console.log('Touch start on element', index);
+                    
+                    // Reset all other elements first
+                    resetAllAnimations();
+                    
+                    // Then activate this element
+                    element.classList.add('touch-active');
+                }, { passive: true });
+            });
+            
+            // Document-wide touch listener to reset animations when tapping away
+            document.addEventListener('touchstart', (e) => {
+                // Only reset if the touch wasn't on an animatable element
+                const touchedElement = e.target.closest('.project-card, .btn-primary, .hero-right .image-wrapper');
+                if (!touchedElement) {
+                    if (isDev) console.log('Tapped away - resetting all animations');
+                    resetAllAnimations();
+                }
+            }, { passive: true });
         }
         
         // Initialize touch animations after DOM is loaded
