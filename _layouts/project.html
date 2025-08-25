@@ -1,0 +1,513 @@
+---
+layout: default
+---
+
+<main class="project-page">
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-header">
+        <a href="{{ '/' | relative_url }}#projects" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 6L8.707 3.207a1 1 0 0 0-1.414 1.414l2.366 2.366a.25.25 0 0 1 0 .707L7.293 10.207a1 1 0 1 0 1.414 1.414L11.5 9.128a2.25 2.25 0 0 0 0-3.256z"/>
+          </svg>
+          Back to Projects
+        </a>
+        <h1 class="project-title">{{ page.title }}</h1>
+        <div class="project-meta">
+          {% if page.role %}
+            <span class="meta-item">{{ page.role }}</span>
+          {% endif %}
+        </div>
+        {% if page.tools %}
+        <div class="meta-tools">
+          {% for tool in page.tools %}
+            <span class="tool-tag">{{ tool }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if page.summary %}
+          <p class="project-summary">{{ page.summary }}</p>
+        {% endif %}
+        {% if page.links %}
+        <div class="project-links">
+          {% for link in page.links %}
+            <a href="{{ link.url }}" class="project-link" {% if link.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 24">
+                <path d="M4,4A1.5,1.5 0 0,0 2.5,5.5V18.5A1.5,1.5 0 0,0 4,20H16A1.5,1.5 0 0,0 17.5,18.5V5.5A1.5,1.5 0 0,0 16,4H4M4,5.5H16V18.5H4V5.5M6,9H14V10.5H6V9M6,12H14V13.5H6V12M6,15H14V16.5H6V15Z"/>
+              </svg>
+              <div class="link-content">
+                <span class="link-title">{{ link.title }}</span>
+                <span class="link-description">{{ link.description }}</span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+
+  {% if page.next_project or page.prev_project %}
+  <section class="project-navigation">
+    <div class="container">
+      <div class="nav-links">
+        {% if page.prev_project %}
+        <a href="{{ page.prev_project.url | relative_url }}" class="nav-link prev">
+          <span class="nav-label">Previous Project</span>
+          <span class="nav-title">{{ page.prev_project.title }}</span>
+        </a>
+        {% endif %}
+        {% if page.next_project %}
+        <a href="{{ page.next_project.url | relative_url }}" class="nav-link next">
+          <span class="nav-label">Next Project</span>
+          <span class="nav-title">{{ page.next_project.title }}</span>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</main>
+
+<style>
+.project-page {
+  margin-top: calc(var(--header-height, 5rem));
+  min-height: 100vh;
+}
+
+.project-hero {
+  padding: 4rem 0 3rem;
+  background: linear-gradient(135deg, #FBF9F4 0%, #F5F2E8 100%);
+}
+
+.project-header {
+  width: 100%;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6B645C;
+  text-decoration: none;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-link svg {
+  width: 1rem;
+  height: 1rem;
+  transform: rotate(180deg);
+}
+
+.back-link:hover {
+  color: #8B956D;
+  transform: translateX(-0.25rem);
+}
+
+.project-title {
+  font-family: 'Rinjani Sans', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  color: #2B2922;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.project-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 50%;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #A594B8, transparent);
+}
+
+.project-title {
+  margin-bottom: 3rem;
+}
+
+.project-meta {
+  margin-bottom: clamp(0.25rem, 0.8vw, 0.5rem) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .project-title {
+    margin-bottom: 2.5rem !important;
+  }
+  
+}
+
+@media (max-width: 48em) {
+  .project-title {
+    margin-bottom: 2.5rem !important;
+  }
+  
+}
+
+.meta-item {
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.7rem, 1.6vw, 0.875rem);
+  color: #8B956D;
+  padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.6rem, 2.4vw, 1rem);
+  background: rgba(139, 149, 109, 0.1);
+  border-radius: clamp(0.8rem, 3vw, 1.5rem);
+  border: 1px solid rgba(139, 149, 109, 0.2);
+  display: inline-block;
+}
+
+.meta-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.25rem, 1.2vw, 0.5rem);
+  margin-bottom: clamp(1.25rem, 3.5vw, 2rem);
+}
+
+.tool-tag {
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.7rem, 1.6vw, 0.875rem);
+  color: #A594B8;
+  padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.6rem, 2.4vw, 1rem);
+  background: rgba(165, 148, 184, 0.1);
+  border-radius: clamp(0.8rem, 3vw, 1.5rem);
+  border: 1px solid rgba(165, 148, 184, 0.2);
+}
+
+.project-summary {
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #6B645C;
+  font-style: italic;
+}
+
+.project-media {
+  padding: 2rem 0;
+}
+
+.media-carousel {
+  position: relative;
+  max-width: 50rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 2rem rgba(43, 41, 34, 0.1);
+  background: #FBF9F4;
+}
+
+.media-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.media-item {
+  min-width: 100%;
+  position: relative;
+  flex-shrink: 0;
+  padding: 2rem;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.media-caption {
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 0.875rem;
+  color: #6B645C;
+  text-align: center;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-btn {
+  background: rgba(43, 41, 34, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.carousel-btn:hover {
+  background: rgba(139, 149, 109, 0.9);
+  transform: scale(1.1);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(139, 149, 109, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+  background: #8B956D;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background: rgba(139, 149, 109, 0.05);
+  border: 1px solid rgba(139, 149, 109, 0.15);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.project-link:hover {
+  background: rgba(139, 149, 109, 0.1);
+  border-color: rgba(139, 149, 109, 0.3);
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 1rem rgba(139, 149, 109, 0.15);
+}
+
+.link-icon {
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  flex-shrink: 0;
+  fill: #8B956D;
+}
+
+.link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.link-title {
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.8vw, 1.125rem);
+  color: #8B956D;
+}
+
+.link-description {
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
+  color: #6B645C;
+  line-height: 1.4;
+}
+
+
+.project-navigation {
+  padding: 3rem 0;
+  background: #2B2922;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-link {
+  flex: 1;
+  padding: 2rem;
+  background: rgba(228, 213, 183, 0.05);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(228, 213, 183, 0.1);
+}
+
+.nav-link:hover {
+  background: rgba(228, 213, 183, 0.1);
+  transform: translateY(-0.25rem);
+}
+
+.nav-link.next {
+  text-align: right;
+}
+
+.nav-label {
+  display: block;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 0.875rem;
+  color: #A594B8;
+  margin-bottom: 0.5rem;
+}
+
+.nav-title {
+  display: block;
+  font-family: 'Rinjani Sans', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #E4D5B7;
+}
+
+/* Mobile Styles */
+@media (max-width: 48em) {
+  .project-hero {
+    padding: 2rem 0;
+  }
+  
+  .back-link {
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .meta-tools {
+    justify-content: flex-start;
+  }
+  
+  .project-summary {
+    font-size: 1.125rem;
+  }
+  
+  .project-content {
+    padding: 2rem 0;
+  }
+  
+  .content-wrapper {
+    font-size: 1rem;
+  }
+  
+  .project-outcomes {
+    padding: 2rem 0;
+  }
+  
+  .outcomes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .outcome-item {
+    padding: 1.5rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+  }
+  
+  .nav-link.next {
+    text-align: left;
+  }
+}
+</style>
+
+<script>
+let currentSlideIndex = 0;
+
+function moveCarousel(direction) {
+  const track = document.getElementById('mediaTrack');
+  const items = track.querySelectorAll('.media-item');
+  const totalSlides = items.length;
+  
+  currentSlideIndex += direction;
+  
+  if (currentSlideIndex >= totalSlides) {
+    currentSlideIndex = 0;
+  } else if (currentSlideIndex < 0) {
+    currentSlideIndex = totalSlides - 1;
+  }
+  
+  updateCarousel();
+}
+
+function currentSlide(index) {
+  currentSlideIndex = index - 1;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  const track = document.getElementById('mediaTrack');
+  const dots = document.querySelectorAll('.dot');
+  
+  if (track) {
+    const translateX = -currentSlideIndex * 100;
+    track.style.transform = `translateX(${translateX}%)`;
+  }
+  
+  // Update active dot
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlideIndex);
+  });
+}
+
+// Initialize carousel on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateCarousel();
+});
+</script>

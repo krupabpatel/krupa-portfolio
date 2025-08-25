@@ -122,6 +122,27 @@
   - Enhanced CSS transitions with proper timing and easing for mobile performance
   - Added development-only console logging for debugging touch interactions
   - All mobile touch interactions now provide immediate visual feedback with instant revert
+- [x] **Project Template System Implementation**
+  - Created comprehensive Jekyll project layout (_layouts/project.html)
+  - Built project template page (project-template.html) as Decap CMS baseline
+  - Implemented Project 1 individual page with realistic PM content
+  - Updated project cards with proper linking structure
+  - Established complete front matter schema for future CMS integration
+- [x] **Project Page Complete Redesign (MAJOR UPDATE)**
+  - **Removed body content section entirely** - No more markdown content area
+  - **Added document links section** for PRD documents and resources
+  - **Implemented responsive role/tools scaling** with proportional vw-based sizing
+  - **Fixed spacing between role and tools** to scale down on mobile (8px → 4px)
+  - **Created custom document icon** with proper paper proportions (20:16 aspect ratio)
+  - **Optimized icon thickness** to match text weight across all viewports
+  - **Added sophisticated hover effects** for document links with sage green theming
+  - **Established new front matter structure** for links array with title, description, url, external flag
+- [x] **Document Links System Architecture**
+  - **Document-focused design**: Only for documents, not general links
+  - **SVG icon system**: Custom paper icon with 3 horizontal lines, optimized thickness
+  - **Responsive scaling**: Icon size clamp(1.5rem, 3vw, 2rem) scales perfectly with text
+  - **Professional styling**: Sage green hover effects, smooth animations, proper visual hierarchy
+  - **Flexible template**: Supports unlimited documents via Decap CMS array structure
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
@@ -279,3 +300,289 @@
 - Keep design clean and minimal like the demo site
 - Focus on usability for content updates
 - Ensure mobile responsiveness
+
+## Project Template System (For Decap CMS Integration)
+
+### Overview
+A comprehensive template system has been implemented to prepare for Decap CMS integration. This system provides a structured approach for creating individual project pages while maintaining design consistency and enabling content management.
+
+### File Structure
+```
+/
+├── _layouts/
+│   └── project.html          # Jekyll layout template for all project pages
+├── project-template.html     # Reference template for Decap CMS (visible page)
+├── project-1.html           # Example project using the template
+└── index.html               # Updated with project card links
+```
+
+### 1. Project Layout Template (_layouts/project.html)
+
+**Purpose**: Jekyll layout that provides consistent structure and styling for all project pages
+
+**Key Features**:
+- Follows complete design system (colors, typography, spacing)
+- Responsive design with mobile-first approach
+- Sophisticated front matter integration
+- Professional navigation and back-linking
+- Comprehensive CSS styling integrated directly in layout
+
+**Design Elements**:
+- Hero section with project title, role, tools, and summary
+- Dynamic media carousel supporting images, videos, and embeds
+- Rich content area with proper typography hierarchy
+- Project navigation (next/previous) for future use
+- Back-to-projects navigation with smooth animations
+- Full-width layout with lavender accent bar extending halfway across title
+
+### 2. Project Template Page (project-template.html)
+
+**Purpose**: Complete reference template that Decap CMS will use as baseline for new project creation
+
+**Critical Role**: 
+- **NOT meant for regular site navigation** - serves as Decap CMS template
+- Shows complete front matter schema with all available fields
+- Demonstrates content structure and formatting examples
+- Includes comprehensive example content across all sections
+
+**Front Matter Schema** (Simplified for side projects):
+```yaml
+---
+layout: project                    # Always "project"
+title: "Project Title"            # Required: Main project title
+summary: "Brief description"      # Required: Subtitle/elevator pitch
+role: "Your Role"                 # Optional: Your role in project
+tools:                           # Optional: Array of tools/technologies
+  - "Tool 1"
+  - "Tool 2"
+media:                           # Optional: Array of media items
+  - type: "image"                # image, video, or embed
+    src: "/path/to/media"
+    alt: "Alt text"              # For images
+    caption: "Caption text"      # Optional caption
+  - type: "video"
+    src: "/path/to/video.mp4"
+    caption: "Video description"
+  - type: "embed"
+    embed: '<iframe src="..."></iframe>'
+    caption: "Embed description"
+next_project:                    # Optional: Navigation to next project
+  title: "Next Project Title"
+  url: "/project-next.html"
+prev_project:                    # Optional: Navigation to previous project
+  title: "Previous Project Title"
+  url: "/project-previous.html"
+---
+```
+
+**Content Structure Guidelines** (Simplified for side projects):
+- **What I Built**: Brief overview and context
+- **The Problem**: What specific issue you wanted to solve
+- **My Approach**: How you tackled the challenge
+- **Key Features**: Main functionality you implemented
+- **What I Learned**: Personal and technical growth
+- **Future Ideas**: Where you might take this next
+
+### 3. Content Creation Guidelines for Decap CMS
+
+**When Decap CMS is implemented**:
+
+1. **New Project Creation**:
+   - Decap CMS will use `project-template.html` as the baseline
+   - All front matter fields will be available as form fields
+   - Content structure will be pre-populated for easy editing
+
+2. **Required Fields**:
+   - `title`: Project name/title
+   - `summary`: Brief description for project cards
+   - Content body with proper markdown structure
+
+3. **Optional but Recommended Fields**:
+   - `role`: Your role in the project
+   - `tools`: Technologies/tools used
+   - `media`: Screenshots, videos, prototypes, or embeds
+
+4. **Content Best Practices**:
+   - Use markdown headers (##, ###) for proper hierarchy
+   - Include quantifiable results where possible
+   - Follow the established content structure
+   - Keep summaries concise for project card display
+   - Use professional tone aligned with PM/consulting background
+
+### 4. Current Implementation Status
+
+**Live Examples**:
+- **Project 1**: `/project-1.html` - Complete example with realistic PM content
+- **Template Reference**: `/project-template.html` - Comprehensive template showcase
+- **Project Cards**: Updated with proper linking structure
+
+**Project Card Linking**:
+- Project 1 → Links to individual project page (`/project-1.html`)
+- Project 2 → Links to template reference (`/project-template.html`) for testing
+- Project 3 → Placeholder for future content
+
+**Testing URLs** (Local Development):
+- Template reference: `http://127.0.0.1:4000/project-template.html`
+- Project 1 example: `http://127.0.0.1:4000/project-1.html`
+
+### 5. Decap CMS Integration Instructions
+
+**When ready to implement Decap CMS**:
+
+1. **Configuration Setup**:
+   - Create `admin/config.yml` with project collection configuration
+   - Set `project-template.html` as the template file
+   - Configure all front matter fields as form fields
+
+2. **Collection Configuration Example**:
+   ```yaml
+   collections:
+     - name: "projects"
+       label: "Projects"
+       folder: "/"
+       create: true
+       template: "project-template"
+       fields:
+         - {label: "Title", name: "title", widget: "string"}
+         - {label: "Summary", name: "summary", widget: "text"}
+         - {label: "Duration", name: "duration", widget: "string", required: false}
+         - {label: "Role", name: "role", widget: "string", required: false}
+         - {label: "Tools", name: "tools", widget: "list", required: false}
+         - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+         - {label: "Content", name: "body", widget: "markdown"}
+   ```
+
+3. **Workflow**:
+   - Content creators use Decap CMS interface
+   - New projects automatically follow template structure
+   - All pages use consistent design and layout
+   - Project cards automatically populate with new content
+
+### 6. Maintenance Guidelines
+
+**File Management**:
+- Keep `project-template.html` updated as the definitive reference
+- All new projects should follow the established front matter schema
+- Update project card links when adding new projects
+- Maintain design system consistency across all project pages
+
+**Content Standards**:
+- Focus on PM/consulting relevant projects
+- Include quantifiable outcomes where possible
+- Maintain professional tone and structure
+- Use the template content structure as a guide
+
+This template system ensures that when Decap CMS is integrated, content creation will be streamlined, consistent, and aligned with the overall design system while providing maximum flexibility for showcasing diverse project types.
+
+## Document Links System (MAJOR FEATURE)
+
+### Overview
+A sophisticated document management system has been implemented to replace the previous markdown content area. This system focuses exclusively on linking to important project documents like PRDs, research findings, and prototypes.
+
+### Core Architecture
+
+**Front Matter Structure**:
+```yaml
+links:
+  - title: "Document Title"
+    description: "Brief description of document contents"
+    url: "/path/to/document.pdf"
+    external: false  # or true for external links
+```
+
+**Design Principles**:
+- **Document-only focus**: Specifically designed for PDFs, prototypes, and research documents
+- **Professional presentation**: Clean, business-appropriate styling with sage green theming
+- **Responsive scaling**: All elements scale proportionally across viewport sizes
+- **Accessibility**: Proper alt text, ARIA labels, and keyboard navigation support
+
+### Visual Design System
+
+**Custom Document Icon**:
+- **SVG-based**: Custom paper icon with proper document proportions (20:16 aspect ratio)
+- **Three horizontal lines**: Represents text content within the document
+- **Optimized thickness**: Lines scaled to match text weight at all viewport sizes
+- **Sage green color**: Matches design system (#8B956D)
+- **Responsive sizing**: `clamp(1.5rem, 3vw, 2rem)` ensures perfect scaling
+
+**Layout & Styling**:
+- **Left-aligned icon**: Document icon on left, content on right
+- **Vertical centering**: Icon perfectly centered with text content
+- **Hover effects**: Smooth lift animation, enhanced shadows, color transitions
+- **Typography**: Funnel Display font with responsive clamp() sizing
+- **Spacing**: All gaps and margins use vw-based responsive units
+
+### Implementation Details
+
+**Responsive Role/Tools Scaling** (Fixed Issue):
+- **Problem**: Role and tools elements weren't scaling proportionally
+- **Solution**: Implemented vw-based clamp() functions for all dimensions
+- **Result**: Perfect scaling from mobile (18px) to desktop (22px) maintaining visual harmony
+
+**Spacing Optimization** (Fixed Issue):
+- **Problem**: Gap between role and tools was larger on mobile (24px) than desktop (8px)
+- **Solution**: Removed conflicting media query overrides, implemented proportional spacing
+- **Result**: Consistent 50% scaling ratio (8px desktop → 4px mobile)
+
+**Icon Design Evolution**:
+1. **Started with**: Generic file icon with fold
+2. **Improved to**: Document with text lines but square proportions
+3. **Optimized to**: Proper paper proportions with refined line thickness
+4. **Final result**: Perfect document icon with 20:16 aspect ratio and optimal visual weight
+
+### Decap CMS Integration Ready
+
+**Template Configuration**:
+- `project-template.html` serves as baseline for Decap CMS
+- Front matter structure supports unlimited document links
+- Each project can have 0-many document links
+- External vs internal link support built-in
+
+**Content Management Workflow**:
+1. Content creator uses Decap CMS interface
+2. Adds document links via form fields (title, description, URL, external flag)
+3. System automatically generates styled document cards with icons
+4. Consistent presentation across all projects maintained
+
+### Technical Specifications
+
+**CSS Implementation**:
+```css
+.link-icon {
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  fill: #8B956D;
+}
+
+.project-link:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 1rem rgba(139, 149, 109, 0.15);
+}
+```
+
+**HTML Structure**:
+```html
+<a href="{{ link.url }}" class="project-link">
+  <svg class="link-icon"><!-- Custom document SVG --></svg>
+  <div class="link-content">
+    <span class="link-title">{{ link.title }}</span>
+    <span class="link-description">{{ link.description }}</span>
+  </div>
+</a>
+```
+
+### Performance & UX Benefits
+
+**Simplified Content Model**:
+- Removed complex markdown content area (performance improvement)
+- Focused on essential document linking (better UX)
+- Reduced cognitive load for content creators
+- Cleaner, more professional presentation
+
+**Enhanced User Experience**:
+- Clear visual hierarchy with document icons
+- Immediate understanding of content type (documents)
+- Professional presentation suitable for PM/consulting portfolio
+- Mobile-optimized touch interactions
+
+This Document Links System represents a major architectural shift from traditional blog-style content to a professional document-centric approach, perfectly suited for showcasing PM work, research findings, and project documentation.
