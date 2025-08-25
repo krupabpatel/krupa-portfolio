@@ -1078,42 +1078,20 @@ body {
     min-height: 100vh;
 }
 
-/* Horizontal slide animation classes (for page-to-page navigation) */
-.page-slide-enter-from-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-
-.page-slide-enter-from-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-.page-slide-enter-active {
-    transform: translateX(0);
-    opacity: 1;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.page-slide-exit-to-left {
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.page-slide-exit-to-right {
-    transform: translateX(100%);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Vertical slide animations removed - horizontal slides kept for page-to-page navigation */
-
-/* Ensure content is positioned for sliding */
+/* Cinematic fade transitions */
 .page-content {
     position: relative;
     z-index: 1;
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+}
+
+/* Entry animation - page fades in */
+.page-fade-in {
+    opacity: 0;
+}
+
+/* Exit animation - page fades out */
+.page-fade-out {
+    opacity: 0;
 }
