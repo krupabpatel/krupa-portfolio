@@ -99,6 +99,10 @@
             
             if (!isMobile) return;
             
+            // Development logging (only on localhost)
+            const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            if (isDev) console.log('Mobile touch animations initialized');
+            
             // Project cards - bidirectional animations
             const projectCards = document.querySelectorAll('.project-card');
             
@@ -121,20 +125,25 @@
             
             // Hero buttons - same touch animations as project cards
             const heroButtons = document.querySelectorAll('.hero-buttons .btn-primary');
+            const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            if (isDev) console.log('Found', heroButtons.length, 'hero buttons');
             
-            heroButtons.forEach(button => {
+            heroButtons.forEach((button, index) => {
                 // Touch start - activate animation
                 button.addEventListener('touchstart', () => {
+                    if (isDev) console.log('Touch start on button', index);
                     button.classList.add('touch-active');
                 }, { passive: true });
                 
                 // Touch end - immediately revert animation (bidirectional)
                 button.addEventListener('touchend', () => {
+                    if (isDev) console.log('Touch end on button', index);
                     button.classList.remove('touch-active');
                 }, { passive: true });
                 
                 // Touch cancel - immediately revert animation
                 button.addEventListener('touchcancel', () => {
+                    if (isDev) console.log('Touch cancel on button', index);
                     button.classList.remove('touch-active');
                 }, { passive: true });
             });
