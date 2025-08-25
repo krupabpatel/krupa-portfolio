@@ -128,44 +128,22 @@
             if (isDev) console.log('Found', heroButtons.length, 'hero buttons');
             
             heroButtons.forEach((button, index) => {
-                // Store original styles
-                const originalStyle = {
-                    color: button.style.color,
-                    transform: button.style.transform,
-                    boxShadow: button.style.boxShadow
-                };
-                
-                // Touch start - activate animation with direct styles
+                // Touch start - activate animation
                 button.addEventListener('touchstart', () => {
                     if (isDev) console.log('Touch start on button', index);
                     button.classList.add('touch-active');
-                    // Apply touch styles directly
-                    button.style.color = 'white';
-                    button.style.transform = 'translateY(-0.1875rem) scale(1.05)';
-                    button.style.boxShadow = '0 0.75rem 2rem rgba(139, 149, 109, 0.3), 0 0.25rem 0.75rem rgba(139, 149, 109, 0.2)';
-                    
-                    const beforeEl = button.querySelector('::before') || button;
-                    if (beforeEl.style) beforeEl.style.width = '100%';
                 }, { passive: true });
                 
                 // Touch end - immediately revert animation (bidirectional)
                 button.addEventListener('touchend', () => {
                     if (isDev) console.log('Touch end on button', index);
                     button.classList.remove('touch-active');
-                    // Restore original styles
-                    button.style.color = originalStyle.color;
-                    button.style.transform = originalStyle.transform;
-                    button.style.boxShadow = originalStyle.boxShadow;
                 }, { passive: true });
                 
                 // Touch cancel - immediately revert animation
                 button.addEventListener('touchcancel', () => {
                     if (isDev) console.log('Touch cancel on button', index);
                     button.classList.remove('touch-active');
-                    // Restore original styles
-                    button.style.color = originalStyle.color;
-                    button.style.transform = originalStyle.transform;
-                    button.style.boxShadow = originalStyle.boxShadow;
                 }, { passive: true });
             });
             
