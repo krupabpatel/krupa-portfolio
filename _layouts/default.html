@@ -125,6 +125,7 @@
             
             // Hero buttons - same touch animations as project cards
             const heroButtons = document.querySelectorAll('.hero-buttons .btn-primary');
+            const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
             if (isDev) console.log('Found', heroButtons.length, 'hero buttons');
             
             heroButtons.forEach((button, index) => {

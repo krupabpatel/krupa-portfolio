@@ -602,50 +602,71 @@ body {
         color: var(--sage-dark);
     }
     
-    /* Simple touch animations for buttons */
+    /* Disable desktop hover states on mobile */
+    .btn-primary:hover {
+        color: var(--charcoal) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: none !important;
+    }
+    
+    .btn-primary:hover::before {
+        width: 0 !important;
+    }
+    
+    /* Hero button touch animations - same as hover effects but triggered by touch */
+    .btn-primary {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        /* Ensure proper default state on mobile */
+        color: var(--charcoal) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: none !important;
+    }
+    
+    .btn-primary::before {
+        width: 0 !important;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
+    
     .btn-primary.touch-active {
-        color: white;
-        transform: translateY(-0.1875rem) scale(1.05);
+        color: white !important;
+        transform: translateY(-0.1875rem) scale(1.05) !important;
         box-shadow: 
             0 0.75rem 2rem rgba(139, 149, 109, 0.3),
-            0 0.25rem 0.75rem rgba(139, 149, 109, 0.2);
+            0 0.25rem 0.75rem rgba(139, 149, 109, 0.2) !important;
     }
     
     .btn-primary.touch-active::before {
-        width: 100%;
+        width: 100% !important;
     }
     
-    /* Simple touch animations for profile */
-    .hero-right .image-wrapper.touch-active::before {
-        transform: translate(-50%, -50%) rotate(-2deg) scale(1.07);
+    /* Disable desktop hover states for profile picture on mobile */
+    .hero-right .image-wrapper:hover::before {
+        transform: translate(-50%, -50%) rotate(-5deg) !important;
     }
     
-    .hero-right .image-wrapper.touch-active img {
-        transform: scale(1.05);
-        box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    .hero-right .image-wrapper:hover img {
+        transform: scale(1) !important;
+        box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.1) !important;
     }
-}
-
     
-    /* Profile picture touch animations */
+    /* Profile picture touch animations - same as hover effects but triggered by touch */
     .hero-right .image-wrapper {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .hero-right .image-wrapper::before {
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
     
     .hero-right .image-wrapper img {
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
     
-    /* Touch active state - ultra-high specificity */
-    body .hero-right .image-wrapper.touch-active.touch-active::before {
+    .hero-right .image-wrapper.touch-active::before {
         transform: translate(-50%, -50%) rotate(-2deg) scale(1.07) !important;
     }
     
-    body .hero-right .image-wrapper.touch-active.touch-active img {
+    .hero-right .image-wrapper.touch-active img {
         transform: scale(1.05) !important;
         box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2) !important;
     }
