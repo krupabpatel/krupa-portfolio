@@ -1069,3 +1069,51 @@ body {
         padding: clamp(2.5rem, 7vw, 4rem) 0;
     }
 }
+
+/* Universal Page Slide Transitions */
+/* Page container for slide animations */
+.page-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Horizontal slide animation classes (for page-to-page navigation) */
+.page-slide-enter-from-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.page-slide-enter-from-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.page-slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.page-slide-exit-to-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.page-slide-exit-to-right {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Vertical slide animations removed - horizontal slides kept for page-to-page navigation */
+
+/* Ensure content is positioned for sliding */
+.page-content {
+    position: relative;
+    z-index: 1;
+}

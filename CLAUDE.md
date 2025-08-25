@@ -143,6 +143,16 @@
   - **Responsive scaling**: Icon size clamp(1.5rem, 3vw, 2rem) scales perfectly with text
   - **Professional styling**: Sage green hover effects, smooth animations, proper visual hierarchy
   - **Flexible template**: Supports unlimited documents via Decap CMS array structure
+- [x] **Universal Page Slide Transitions (MAJOR UX ENHANCEMENT)**
+  - **Intelligent Navigation Detection**: Distinguishes between same-page (hash) and page-to-page navigation
+  - **Horizontal Slide Animations**: Smooth slide transitions for page-to-page navigation only
+  - **Directional Logic**: Homepage to project (slide right), project to homepage (slide left)
+  - **Same-page Navigation Preserved**: Hash links maintain natural browser scrolling behavior
+  - **Referrer-based Entry Animation**: Detects navigation source and applies appropriate slide direction
+  - **Performance Optimized**: Animations only trigger for actual page changes, not refreshes
+  - **Development Logging**: Console debugging for navigation flow understanding
+  - **CSS Architecture**: Universal page container with slide classes for consistent transitions
+  - **Enhanced UX**: Professional transitions that enhance navigation without interfering with anchors
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
@@ -586,3 +596,135 @@ links:
 - Mobile-optimized touch interactions
 
 This Document Links System represents a major architectural shift from traditional blog-style content to a professional document-centric approach, perfectly suited for showcasing PM work, research findings, and project documentation.
+
+## Universal Page Slide Transitions System (MAJOR UX ENHANCEMENT)
+
+### Overview
+A sophisticated page transition system has been implemented that provides smooth, professional navigation between pages while preserving natural browser behavior for same-page navigation. This system enhances the user experience without interfering with anchor links or normal page functionality.
+
+### Core Architecture
+
+**Navigation Intelligence**:
+- **Same-page Detection**: Recognizes hash links (`#projects`, `/#contact`) and preserves natural scrolling
+- **Page-to-page Detection**: Identifies navigation between different pages and applies slide animations
+- **Referrer Analysis**: Uses `document.referrer` to determine navigation direction and source
+- **Refresh Protection**: Prevents animations on page refreshes or direct navigation
+
+**Slide Direction Logic**:
+```javascript
+// Homepage to project page = slide from right (content slides left)
+// Project page to homepage = slide from left (content slides right)
+```
+
+### Technical Implementation
+
+**HTML Structure**:
+```html
+<div class="page-container">
+    <div class="page-content">
+        {{ content }}
+    </div>
+</div>
+```
+
+**CSS Animation Classes**:
+```css
+/* Entry animations */
+.page-slide-enter-from-right { transform: translateX(100%); opacity: 0; }
+.page-slide-enter-from-left  { transform: translateX(-100%); opacity: 0; }
+.page-slide-enter-active     { transform: translateX(0); opacity: 1; transition: 0.4s; }
+
+/* Exit animations (for future enhancements) */
+.page-slide-exit-to-left     { transform: translateX(-100%); opacity: 0; }
+.page-slide-exit-to-right    { transform: translateX(100%); opacity: 0; }
+```
+
+**JavaScript Navigation Handler**:
+- **Intelligent Link Detection**: Analyzes href attributes to categorize navigation type
+- **Performance Optimization**: Only processes relevant navigation events
+- **Development Logging**: Comprehensive console output for debugging navigation flow
+- **Browser Compatibility**: Works with modern Navigation API and fallback methods
+
+### Navigation Flow Examples
+
+**Same-page Navigation** (No animation):
+- `#projects` from homepage → Natural scroll to Projects section
+- `/#contact` from homepage → Natural scroll to Contact section
+- `Connect` button → Natural scroll to Contact section
+
+**Page-to-page Navigation** (With slide animation):
+- Homepage → Project 1 page → Slide from right (content slides left)
+- Project 1 page → Homepage → Slide from left (content slides right)
+- Project page → Back to Projects → Slide from left (content slides right)
+
+### User Experience Benefits
+
+**Professional Polish**:
+- Smooth, modern transitions that feel native to high-end portfolios
+- Directional consistency that provides spatial navigation context
+- Enhanced perceived performance through smooth visual continuity
+
+**Preserved Functionality**:
+- Anchor links work exactly as expected (no JavaScript interference)
+- Back/forward browser buttons maintain natural behavior
+- Page refreshes don't trigger unwanted animations
+- External links and same-page navigation remain unaffected
+
+**Performance Optimized**:
+- Animations only trigger when actually needed (page changes)
+- Lightweight CSS-based animations with GPU acceleration
+- No interference with existing touch animations or hover effects
+- Minimal JavaScript overhead with intelligent event handling
+
+### Technical Specifications
+
+**Animation Timing**:
+- **Duration**: 0.4 seconds for professional feel
+- **Easing**: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` for smooth, natural motion
+- **Opacity**: Coordinated with transform for seamless transitions
+
+**Browser Support**:
+- **Modern Navigation API**: Primary detection method for page type
+- **Performance API Fallback**: Legacy browser support for refresh detection
+- **Referrer Analysis**: Universal browser support for navigation source detection
+
+**Development Features**:
+- **Console Logging**: Detailed navigation flow debugging (development only)
+- **Error Handling**: Graceful fallbacks for parsing errors or edge cases
+- **Extensibility**: Clean architecture for adding more transition types
+
+### Future Enhancement Possibilities
+
+**Exit Animations**: 
+- Currently implements entry animations only
+- Exit animation classes prepared for potential click-to-transition upgrades
+- Could add coordinated exit/entry for seamless page-to-page flow
+
+**Additional Transition Types**:
+- Fade transitions for certain navigation patterns
+- Vertical slides for different content relationships
+- Custom animations based on specific page combinations
+
+**Performance Monitoring**:
+- Animation performance metrics
+- User interaction analytics for transition effectiveness
+- A/B testing framework for different transition styles
+
+### Integration with Existing Systems
+
+**Mobile Compatibility**:
+- Works seamlessly with existing mobile hamburger menu
+- Maintains touch animation performance
+- Respects mobile-specific navigation patterns
+
+**Project Template System**:
+- All project pages benefit from consistent transition behavior
+- Back-to-projects navigation provides intuitive spatial context
+- Template inheritance ensures all pages participate in transition system
+
+**Design System Alignment**:
+- Animation timing matches existing hover and touch animations
+- Transition easing complements overall design language
+- No interference with established visual hierarchy or spacing
+
+This Universal Page Slide Transitions System represents a major enhancement to the portfolio's user experience, providing the polish and sophistication expected in professional PM/consulting portfolios while maintaining all browser functionality and performance standards.

@@ -39,7 +39,11 @@
             <a href="{{ '/' | relative_url }}#contact" class="mobile-menu-link">Book Consultation</a>
         </div>
     </div>
-    {{ content }}
+    <div class="page-container">
+        <div class="page-content">
+            {{ content }}
+        </div>
+    </div>
     
     <script>
         // Dynamic navbar height calculation for hero positioning
@@ -151,6 +155,151 @@
         
         // Initialize touch animations after DOM is loaded
         document.addEventListener('DOMContentLoaded', initTouchAnimations);
+
+        // Page transitions with horizontal slides for page-to-page, clean scrolling for same-page
+        function initPageTransitions() {
+            const pageContent = document.querySelector('.page-content');
+            if (!pageContent) return;
+
+            // Development logging
+            const isDev = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            if (isDev) console.log('Page transitions initialized - horizontal slides enabled, vertical slides disabled');
+
+            // Set up page entry animation based on referrer or navigation
+            function setupPageEntry() {
+                const referrer = document.referrer;
+                const currentPath = window.location.pathname;
+                
+                // Only animate if there's a referrer (coming from another page within the site)
+                if (!referrer) {
+                    if (isDev) console.log('No referrer - skipping entry animation');
+                    return;
+                }
+                
+                // Check if this is a page refresh by looking at navigation type
+                if (performance.navigation && performance.navigation.type === 1) {
+                    if (isDev) console.log('Page refresh detected - skipping entry animation');
+                    return;
+                }
+                
+                // Modern way to detect refresh using Navigation API (fallback)
+                if (window.performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+                    if (isDev) console.log('Page reload detected - skipping entry animation');
+                    return;
+                }
+                
+                try {
+                    const referrerURL = new URL(referrer);
+                    const referrerPath = referrerURL.pathname;
+                    
+                    // Only animate if coming from within the same site
+                    if (referrerURL.origin !== window.location.origin) {
+                        if (isDev) console.log('External referrer - skipping entry animation');
+                        return;
+                    }
+                    
+                    // Only animate if actually navigating between different pages
+                    if (referrerPath === currentPath) {
+                        if (isDev) console.log('Same page - skipping entry animation');
+                        return;
+                    }
+                    
+                    // Determine slide direction based on navigation
+                    let slideDirection = 'right'; // default: slide from right
+                    
+                    // If coming from homepage to project page, slide from right
+                    if (referrerPath === '/' && currentPath.includes('.html')) {
+                        slideDirection = 'right';
+                    }
+                    // If coming from project page to homepage, slide from left
+                    else if (referrerPath.includes('.html') && currentPath === '/') {
+                        slideDirection = 'left';
+                    }
+                    
+                    // Apply entry animation
+                    pageContent.classList.add('page-slide-enter-from-' + slideDirection);
+                    
+                    // Trigger the slide-in animation
+                    setTimeout(() => {
+                        pageContent.classList.remove('page-slide-enter-from-' + slideDirection);
+                        pageContent.classList.add('page-slide-enter-active');
+                    }, 50);
+                    
+                    if (isDev) console.log('Page entering from', slideDirection, 'referrer:', referrerPath);
+                    
+                } catch (error) {
+                    if (isDev) console.log('Error parsing referrer - skipping entry animation:', error);
+                    return;
+                }
+            }
+
+            // Handle link clicks for smooth transitions
+            function handleLinkClick(event) {
+                const link = event.target.closest('a');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                if (!href) return;
+                
+                const currentPath = window.location.pathname;
+                
+                // Check if this is same-page navigation (hash links on current page or root navigation from current page)
+                const isSamePage = 
+                    // Hash links when already on homepage
+                    (href.startsWith('#') && currentPath === '/') ||
+                    // Root navigation when already on homepage
+                    (href === '/' && currentPath === '/') ||
+                    // Hash links that navigate to homepage from homepage
+                    (href.startsWith('/#') && currentPath === '/');
+                
+                if (isSamePage) {
+                    if (isDev) console.log('Same-page navigation - letting browser handle naturally:', href);
+                    
+                    // Let browser handle anchor navigation naturally - no custom scrolling
+                    return;
+                }
+                
+                // Only animate for actual page-to-page navigation
+                const isPageToPageNavigation = 
+                    // Homepage to project page
+                    (currentPath === '/' && href.includes('.html')) ||
+                    // Project page to homepage
+                    (currentPath.includes('.html') && (href === '/' || href.includes('#projects')));
+                
+                if (!isPageToPageNavigation) {
+                    if (isDev) console.log('Not a page-to-page navigation, allowing default behavior for:', href);
+                    return; // Let browser handle normally
+                }
+                
+                // Determine slide direction for page-to-page navigation
+                let slideDirection = 'left'; // default: slide to left
+                
+                // If going from homepage to project page, slide to left
+                if (currentPath === '/' && href.includes('.html')) {
+                    slideDirection = 'left';
+                }
+                // If going from project page to homepage, slide to right  
+                else if (currentPath.includes('.html') && (href === '/' || href.includes('#projects'))) {
+                    slideDirection = 'right';
+                }
+                
+                // Let browser handle navigation naturally - entry animation will trigger on new page
+                if (isDev) console.log('Page-to-page navigation to', slideDirection, 'for href:', href);
+                
+                // Don't prevent default - let browser handle the navigation
+                // Entry animation will be triggered when the new page loads
+            }
+
+
+            // Set up entry animation on page load
+            setupPageEntry();
+
+            // Add click listeners to all navigation links
+            document.addEventListener('click', handleLinkClick);
+        }
+
+        // Initialize page transitions after DOM is loaded
+        document.addEventListener('DOMContentLoaded', initPageTransitions);
     </script>
 </body>
 </html>
