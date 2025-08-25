@@ -42,6 +42,21 @@
     {{ content }}
     
     <script>
+        // Dynamic navbar height calculation for hero positioning
+        function updateNavbarHeight() {
+            const header = document.querySelector('.header');
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+            }
+        }
+        
+        // Update on load and resize
+        window.addEventListener('load', updateNavbarHeight);
+        window.addEventListener('resize', updateNavbarHeight);
+        // Update immediately
+        updateNavbarHeight();
+
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');

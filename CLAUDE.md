@@ -71,6 +71,20 @@
   - Resolved font loading issues by removing spaces from font filenames
   - Added font and image preloading to prevent flash of unstyled content
   - Optimized font-display strategy to reduce layout shifts
+- [x] **Navbar & Mobile UX Enhancements**
+  - Increased "Krupa Patel" navbar size from 1.25rem to 1.5rem for better visibility
+  - Maintained semibold (600) font weight for professional appearance
+  - Updated all mobile breakpoint sizes proportionally for consistency
+  - Fixed mobile horizontal overflow issue caused by rotating background elements
+  - Added overflow-x: hidden to both html and body to prevent unwanted scrolling
+- [x] **Dynamic Navbar Height Solution (Ultra-robust)**
+  - Implemented JavaScript solution to dynamically measure actual navbar height
+  - Created CSS custom property --header-height with 5rem fallback
+  - Updated hero positioning to use calc(var(--header-height) + responsive-padding)
+  - Added resize and load event listeners for real-time updates
+  - Ensures hero text never gets cut off across all viewports, zoom levels, and content changes
+  - Works with desktop (margin-top) and mobile (padding-top) layouts
+  - Maintains responsive spacing ratios while preventing navbar overlap
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
