@@ -601,6 +601,37 @@ body {
     .project-card.touch-active h3 {
         color: var(--sage-dark);
     }
+    
+    /* Hero button touch animations - same as hover effects but triggered by touch */
+    .btn-primary {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .btn-primary.touch-active {
+        color: white;
+        transform: translateY(-0.1875rem) scale(1.05);
+        box-shadow: 
+            0 0.75rem 2rem rgba(139, 149, 109, 0.3),
+            0 0.25rem 0.75rem rgba(139, 149, 109, 0.2);
+    }
+    
+    .btn-primary.touch-active::before {
+        width: 100%;
+    }
+    
+    /* Profile picture touch animations - same as hover effects but triggered by touch */
+    .hero-right .image-wrapper {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .hero-right .image-wrapper.touch-active::before {
+        transform: translate(-50%, -50%) rotate(-2deg) scale(1.07);
+    }
+    
+    .hero-right .image-wrapper.touch-active img {
+        transform: scale(1.05);
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    }
 }
 
 .project-card h3 {

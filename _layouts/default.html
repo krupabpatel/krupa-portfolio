@@ -99,6 +99,7 @@
             
             if (!isMobile) return;
             
+            // Project cards - bidirectional animations
             const projectCards = document.querySelectorAll('.project-card');
             
             projectCards.forEach(card => {
@@ -107,18 +108,56 @@
                     card.classList.add('touch-active');
                 }, { passive: true });
                 
-                // Touch end - deactivate animation after delay
+                // Touch end - immediately revert animation (bidirectional)
                 card.addEventListener('touchend', () => {
-                    setTimeout(() => {
-                        card.classList.remove('touch-active');
-                    }, 300); // Keep animation for 300ms after touch ends
+                    card.classList.remove('touch-active');
                 }, { passive: true });
                 
-                // Touch cancel - deactivate animation
+                // Touch cancel - immediately revert animation
                 card.addEventListener('touchcancel', () => {
                     card.classList.remove('touch-active');
                 }, { passive: true });
             });
+            
+            // Hero buttons - same touch animations as project cards
+            const heroButtons = document.querySelectorAll('.hero-buttons .btn-primary');
+            
+            heroButtons.forEach(button => {
+                // Touch start - activate animation
+                button.addEventListener('touchstart', () => {
+                    button.classList.add('touch-active');
+                }, { passive: true });
+                
+                // Touch end - immediately revert animation (bidirectional)
+                button.addEventListener('touchend', () => {
+                    button.classList.remove('touch-active');
+                }, { passive: true });
+                
+                // Touch cancel - immediately revert animation
+                button.addEventListener('touchcancel', () => {
+                    button.classList.remove('touch-active');
+                }, { passive: true });
+            });
+            
+            // Profile picture - same touch animations as hover effects
+            const profileImage = document.querySelector('.hero-right .image-wrapper');
+            
+            if (profileImage) {
+                // Touch start - activate animation
+                profileImage.addEventListener('touchstart', () => {
+                    profileImage.classList.add('touch-active');
+                }, { passive: true });
+                
+                // Touch end - immediately revert animation (bidirectional)
+                profileImage.addEventListener('touchend', () => {
+                    profileImage.classList.remove('touch-active');
+                }, { passive: true });
+                
+                // Touch cancel - immediately revert animation
+                profileImage.addEventListener('touchcancel', () => {
+                    profileImage.classList.remove('touch-active');
+                }, { passive: true });
+            }
         }
         
         // Initialize touch animations after DOM is loaded
