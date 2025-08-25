@@ -665,36 +665,11 @@ body {
 
 /* Mobile touch-triggered animations */
 @media (hover: none) and (pointer: coarse) {
-    /* Show all elements normally on mobile - no hidden initial state */
-    .project-card,
-    .resume-section,
-    .timeline-item,
-    .skill-category {
-        opacity: 1;
-        transform: none;
-    }
+    /* Keep hidden initial state for scroll animations to work on mobile */
+    /* Elements will be revealed by JavaScript when scrolled into view */
     
-    /* Reset all animate-in classes on mobile */
-    .project-card.animate-in:nth-child(1),
-    .project-card.animate-in:nth-child(2),
-    .project-card.animate-in:nth-child(3),
-    .resume-section.animate-in:nth-child(1),
-    .resume-section.animate-in:nth-child(2),
-    .resume-section.animate-in:nth-child(3),
-    .timeline-item.animate-in:nth-child(1),
-    .timeline-item.animate-in:nth-child(2),
-    .timeline-item.animate-in:nth-child(3),
-    .skill-category.animate-in:nth-child(1),
-    .skill-category.animate-in:nth-child(2),
-    .skill-category.animate-in:nth-child(3),
-    .skill-category.animate-in:nth-child(4) {
-        animation: none;
-    }
-    
-    /* Default state - show cards normally without animation */
+    /* Mobile-specific project card transitions for touch animations */
     .project-card {
-        opacity: 1;
-        transform: none;
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
@@ -1626,6 +1601,17 @@ body {
     color: rgba(255, 255, 255, 0.7);
     font-weight: 400;
     letter-spacing: 0.025em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: baseline;
+    margin: 0 0.25rem;
 }
 
 /* Mobile footer adjustments */

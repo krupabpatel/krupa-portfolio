@@ -172,9 +172,7 @@
 
         // Scroll-triggered animations for all sections
         function initScrollAnimations() {
-            // Only run on desktop (devices with hover)
-            const isDesktop = window.matchMedia('(hover: hover)').matches;
-            if (!isDesktop) return;
+            // Run on all devices (desktop and mobile)
             
             const animatedElements = document.querySelectorAll('.project-card, .resume-section, .timeline-item, .skill-category');
             
