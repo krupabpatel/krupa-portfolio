@@ -98,6 +98,19 @@
   - Full hover effects applied on scroll: shimmer, lavender accent bar, shadows, scaling
   - Staggered animation delays maintain elegant timing from desktop version
   - Seamless transition between desktop hover and mobile scroll interactions
+- [x] **Content and Typography Updates**
+  - Changed "Selected Work" to "Projects" in section title and navbar
+  - Updated Projects section subtitle to focus on PM side projects and user research
+  - Made section subtitle font size match hero subtitle for consistency across viewports
+  - Optimized section subtitle width for better line wrapping (3-line layout)
+  - Enhanced section title background text effect with better positioning and opacity
+  - Increased mobile title sizes for both hero and Projects sections for better readability
+- [x] **Project Cards Redesign**
+  - Updated project cards with placeholder content (Project 1, 2, 3)
+  - Enhanced title line-height to support multi-line titles
+  - Experimented with lavender divider animations (removed due to mobile touch conflicts)
+  - Maintained mobile touch animations for project card interactions
+  - Preserved hover effects and shimmer animations on desktop
 
 ## Next Steps
 1. ~~Create basic Jekyll structure~~ ✅ Complete
