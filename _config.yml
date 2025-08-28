@@ -1,7 +1,7 @@
 title: "Krupa's Portfolio"
 description: Personal portfolio website
 baseurl: ""  # Custom domain uses root path
-url: "https://yourdomain.com"  # Replace with your actual domain
+url: "https://kroops.me"
 
 # GitHub Pages settings
 repository: "krupabpatel/krupa-portfolio"
