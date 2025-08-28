@@ -1,0 +1,24 @@
+{
+    "name": "Krupa Patel - Product Manager",
+    "short_name": "Krupa Patel",
+    "description": "Krupa Patel - Product Manager",
+    "icons": [
+        {
+            "src": "assets/images/favicon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/images/favicon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#E4D5B7",
+    "theme_color": "#A594B8",
+    "orientation": "portrait-primary"
+}

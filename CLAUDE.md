@@ -21,6 +21,7 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - Project template system with media carousel and document links
 - Universal fade page transitions
 - Scroll-triggered animations on both desktop and mobile
+- Complete favicon system with multi-platform support
 
 ## Key Features Completed
 - **Design System**: Earthy color palette (Sand #E4D5B7, Sage #8B956D, Lavender #A594B8)
@@ -29,11 +30,14 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - **Navigation**: Smooth scrolling, fade transitions, mobile menu
 - **Content Management**: Jekyll layouts, front matter schemas, CMS-ready templates
 - **Mobile UX**: Touch animations, responsive scaling, hamburger menu
+- **Favicon System**: Multi-size support (16px, 32px, 180px, 192px, 512px), ICO format, web manifest
 
 ## Project Structure
 - `_layouts/project.html` - Jekyll template for project pages
 - `project-template.html` - Decap CMS baseline template
 - `project-1.html` - Example project implementation
+- `assets/images/favicon-*.png` - Multi-size favicon files (16, 32, 180, 192, 512px)
+- `favicon.ico`, `site.webmanifest` - Root-level favicon and PWA manifest
 - Hero, Projects, Resume, Footer sections on homepage
 
 ## Commands
@@ -67,3 +71,4 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - **CSS Custom Properties**: Dynamic navbar height
 - **Touch Events**: Mobile interaction animations
 - **Document Links**: Professional project resource system
+- **Multi-Platform Favicons**: Cross-browser/device compatibility with PWA support
