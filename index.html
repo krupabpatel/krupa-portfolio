@@ -116,37 +116,25 @@ layout: default
         <div class="resume-section">
           <h3 class="resume-section-title">Education</h3>
           <div class="timeline">
+            {% assign sorted_education = site.education | sort: 'order' %}
+            {% for edu in sorted_education %}
             <div class="timeline-item">
               <div class="timeline-marker"></div>
               <div class="timeline-content">
                 <div class="timeline-header">
-                  <h4>Master of Business Administration - MBA</h4>
-                  <span class="timeline-date">May 2025</span>
+                  <h4>{{ edu.degree }}</h4>
+                  <span class="timeline-date">{{ edu.graduation_date }}</span>
                 </div>
-                <div class="timeline-institution">Carnegie Mellon University, Tepper School of Business</div>
-                <div class="timeline-location">Pittsburgh, PA</div>
+                <div class="timeline-institution">{{ edu.institution }}</div>
+                <div class="timeline-location">{{ edu.location }}</div>
+                {% if edu.details %}
                 <div class="timeline-details">
-                  <p><strong>Concentrations:</strong> Business Technologies, Entrepreneurship, Product Management/Business Strategy</p>
-                  <p><strong>Leadership:</strong> Business and Technology Club: Auxiliary Board, Tepper Women in Business Club: Marketing Chair, Graduate Entrepreneurship Club</p>
+                  {{ edu.details | markdownify }}
                 </div>
+                {% endif %}
               </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <h4>Bachelor of Science - Dual Degree</h4>
-                  <span class="timeline-date">May 2021</span>
-                </div>
-                <div class="timeline-institution">University of Illinois at Urbana-Champaign, Gies College of Business</div>
-                <div class="timeline-location">Champaign, IL</div>
-                <div class="timeline-details">
-                  <p><strong>Majors:</strong> Information Systems & Operations Management</p>
-                  <p><strong>Honors:</strong> Graduated with High Honors</p>
-                  <p><strong>Leadership:</strong> Society of Women in Business: Service Chair, Indian Student Association, Lead Peer Advisor</p>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
 

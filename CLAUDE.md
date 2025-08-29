@@ -87,6 +87,13 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - No URL slugs needed - maintains existing anchor link navigation
 - Text widget fields for easy subtitle editing
 
+✅ **Resume Education Section CMS Integration**
+- Education entries now managed through Sveltia CMS via `_education` collection
+- Individual education cards with fields: degree, institution, location, graduation_date, details
+- Dynamic timeline generation sorted by display order
+- Existing education data migrated to CMS files: `cmu.md`, `uiuc.md`
+- Maintains timeline styling while enabling content management
+
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
 - **Jekyll Filters**: GitHub Pages asset path compatibility  

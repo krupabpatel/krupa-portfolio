@@ -22,6 +22,8 @@ collections:
     output: false
   sections:
     output: false
+  education:
+    output: false
 
 # Defaults
 defaults:

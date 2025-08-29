@@ -84,3 +84,16 @@ collections:
         fields:
           - { label: "Projects Subtitle", name: "projects_subtitle", widget: "text", hint: "Subtitle text under the Projects section" }
           - { label: "Resume Subtitle", name: "resume_subtitle", widget: "text", hint: "Subtitle text under the Resume section" }
+
+  - name: "education"
+    label: "Education"
+    folder: "_education"
+    create: true
+    slug: "{{degree}}"
+    fields:
+      - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first" }
+      - { label: "Degree", name: "degree", widget: "string", hint: "e.g., Master of Business Administration - MBA" }
+      - { label: "Institution", name: "institution", widget: "string", hint: "University or school name" }
+      - { label: "Location", name: "location", widget: "string", hint: "City, State" }
+      - { label: "Date", name: "graduation_date", widget: "string", hint: "e.g., May 2025" }
+      - { label: "Details", name: "details", widget: "markdown", required: false, hint: "Concentrations, honors, leadership, etc." }
