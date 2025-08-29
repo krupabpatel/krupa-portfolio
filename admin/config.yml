@@ -1,3 +1,4 @@
+# Decap CMS Configuration for GitHub Pages
 backend:
   name: github
   repo: krupabpatel/krupa-portfolio
