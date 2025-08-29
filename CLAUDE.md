@@ -60,10 +60,17 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - **Responsive**: Mobile-first with clamp() scaling
 
 ## Next Steps
-1. Configure Decap CMS
+1. ✅ Configure Decap CMS - Dynamic project cards and content management
 2. Add real project content
 3. SEO optimization
 4. Content editing workflow testing
+
+## CMS Integration Status
+✅ **Dynamic Project System**
+- Homepage automatically generates project cards from `_projects` collection
+- Project cards display `summary` field, project pages display markdown `content`
+- URL slug field for customizable project URLs
+- Proper separation of card preview vs. page content
 
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
