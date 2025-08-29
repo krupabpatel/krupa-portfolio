@@ -96,4 +96,11 @@ collections:
       - { label: "Institution", name: "institution", widget: "string", hint: "University or school name" }
       - { label: "Location", name: "location", widget: "string", hint: "City, State" }
       - { label: "Date", name: "graduation_date", widget: "string", hint: "e.g., May 2025" }
-      - { label: "Details", name: "details", widget: "markdown", required: false, hint: "Concentrations, honors, leadership, etc." }
+      - label: "Details"
+        name: "details"
+        widget: "list"
+        required: false
+        hint: "Add category/description pairs (e.g., Concentrations, Honors, Leadership)"
+        fields:
+          - { label: "Category", name: "category", widget: "string", hint: "e.g., Concentrations, Honors, Leadership" }
+          - { label: "Body", name: "body", widget: "text", hint: "The description text for this category" }

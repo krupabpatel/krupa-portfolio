@@ -129,7 +129,9 @@ layout: default
                 <div class="timeline-location">{{ edu.location }}</div>
                 {% if edu.details %}
                 <div class="timeline-details">
-                  {{ edu.details | markdownify }}
+                  {% for detail in edu.details %}
+                  <p><strong>{{ detail.category }}:</strong> {{ detail.body }}</p>
+                  {% endfor %}
                 </div>
                 {% endif %}
               </div>

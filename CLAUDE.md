@@ -90,9 +90,11 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 ✅ **Resume Education Section CMS Integration**
 - Education entries now managed through Sveltia CMS via `_education` collection
 - Individual education cards with fields: degree, institution, location, graduation_date, details
+- Dynamic category/body pairs for education details (e.g., Concentrations, Honors, Leadership)
+- Categories auto-formatted with bold text and colons in template
 - Dynamic timeline generation sorted by display order
 - Existing education data migrated to CMS files: `cmu.md`, `uiuc.md`
-- Maintains timeline styling while enabling content management
+- Maintains timeline styling while enabling flexible content management
 
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
