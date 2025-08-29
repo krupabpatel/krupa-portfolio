@@ -2,6 +2,7 @@
 layout: project
 title: E-commerce Checkout Optimization Test
 slug: e-commerce-test
+order: 1
 summary: This is a test of a first project
 role: UX Researcher & Designer
 tools:

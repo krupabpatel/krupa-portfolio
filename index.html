@@ -45,7 +45,8 @@ layout: default
         <p class="section-subtitle">Side projects exploring product management concepts, user research methodologies, and data-driven solutions I've developed to solve real-world problems.</p>
       </div>
       <div class="project-grid">
-        {% for project in site.projects %}
+        {% assign sorted_projects = site.projects | sort: 'order' %}
+        {% for project in sorted_projects %}
         <div class="project-card" data-href="{{ project.url | relative_url }}">
           <h3>{{ project.title }}</h3>
           <p>{{ project.summary }}</p>

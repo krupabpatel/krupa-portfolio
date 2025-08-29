@@ -2,7 +2,8 @@
 layout: project
 title: E-commerce Checkout Optimization Test 2
 slug: e-commerce-test-2
-summary: This is a test of a first project
+order: 2
+summary: This is a test of a second project
 role: UX Researcher & Designer
 tools:
   - Google Analytics

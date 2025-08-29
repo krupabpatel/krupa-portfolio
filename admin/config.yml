@@ -19,6 +19,7 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "project" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "URL Slug", name: "slug", widget: "string", hint: "URL-friendly name (e.g., 'my-project' becomes /projects/my-project/)", pattern: ['^[a-z0-9-]+$', "Only lowercase letters, numbers, and hyphens allowed"] }
+      - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first on homepage" }
       - { label: "Summary", name: "summary", widget: "text", hint: "Short description for project cards on homepage" }
       - { label: "Role", name: "role", widget: "string" }
       - { label: "Tools Used", name: "tools", widget: "list", allow_add: true, field: { label: "Tool", name: "tool", widget: "string" } }
