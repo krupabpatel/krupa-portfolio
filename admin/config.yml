@@ -3,6 +3,8 @@ backend:
   name: github
   repo: krupabpatel/krupa-portfolio
   branch: main
+  base_url: https://cms-auth-proxy-kroops.anshuldesai.workers.dev
+  auth_endpoint: auth
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
