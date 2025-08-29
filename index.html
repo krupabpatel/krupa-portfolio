@@ -128,60 +128,17 @@ layout: default
         <div class="resume-section">
           <h3 class="resume-section-title">Skills & Certifications</h3>
           <div class="skills-grid">
+            {% assign sorted_skills = site.skills | sort: 'order' %}
+            {% for skill_category in sorted_skills %}
             <div class="skill-category">
-              <h4>Product Management & Strategy</h4>
+              <h4>{{ skill_category.category_name }}</h4>
               <div class="skill-tags">
-                <span class="skill-tag">Product Strategy & Development</span>
-                <span class="skill-tag">Go-to-Market Strategy</span>
-                <span class="skill-tag">Business Case Development</span>
-                <span class="skill-tag">Product Lifecycle Management</span>
-                <span class="skill-tag">OKRs & KPI Tracking</span>
-                <span class="skill-tag">Market Analysis</span>
-                <span class="skill-tag">User Research</span>
-                <span class="skill-tag">Customer Journey Mapping</span>
-                <span class="skill-tag">Agile/Scrum</span>
-                <span class="skill-tag">Stakeholder Management</span>
-                <span class="skill-tag">Change Management</span>
-                <span class="skill-tag">Wireframing</span>
+                {% for skill in skill_category.skills %}
+                <span class="skill-tag{% if skill_category.color == 'lavender' %} certification{% endif %}">{{ skill.name }}</span>
+                {% endfor %}
               </div>
             </div>
-            <div class="skill-category">
-              <h4>Analytics & Data</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">R</span>
-                <span class="skill-tag">Tableau</span>
-                <span class="skill-tag">Data Visualization</span>
-                <span class="skill-tag">Metrics</span>
-                <span class="skill-tag">Data Modeling</span>
-                <span class="skill-tag">KPI Dashboards</span>
-                <span class="skill-tag">Reporting Automation</span>
-                <span class="skill-tag">A/B Testing</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4>Technical & Tools</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Salesforce</span>
-                <span class="skill-tag">UI/UX Design</span>
-                <span class="skill-tag">User Acceptance Testing</span>
-                <span class="skill-tag">Jira</span>
-                <span class="skill-tag">Confluence</span>
-                <span class="skill-tag">MS Excel</span>
-                <span class="skill-tag">PowerPoint</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4>Certifications</h4>
-              <div class="skill-tags">
-                <span class="skill-tag certification">Salesforce Certified Administrator</span>
-                <span class="skill-tag certification">Salesforce Certified Platform App Builder</span>
-                <span class="skill-tag certification">Salesforce Certified Advanced Administrator</span>
-                <span class="skill-tag certification">IBM: Python 101 for Data Science</span>
-                <span class="skill-tag certification">IBM: Introduction to Cloud</span>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>

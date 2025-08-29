@@ -105,6 +105,15 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - Existing experience data migrated to CMS files: `nvidia.md`, `nttdata.md`
 - Maintains timeline and bullet point styling while enabling flexible content management
 
+✅ **Resume Skills & Certifications Section CMS Integration**
+- Skills categories now managed through Sveltia CMS via `_skills` collection
+- Individual skill category cards with fields: category_name, color (tan/lavender), skills list
+- Dynamic skill tag generation with customizable colors
+- List order preservation - skills display in CMS list order
+- Existing skills data migrated to individual category files: `product-management.md`, `analytics-data.md`, `technical-tools.md`, `certifications.md`
+- Lavender color option for certifications, tan for regular skills
+- Maintains grid layout and tag styling while enabling flexible content management
+
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
 - **Jekyll Filters**: GitHub Pages asset path compatibility  

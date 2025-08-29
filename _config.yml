@@ -26,6 +26,8 @@ collections:
     output: false
   experience:
     output: false
+  skills:
+    output: false
 
 # Defaults
 defaults:

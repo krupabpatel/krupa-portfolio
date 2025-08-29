@@ -29,6 +29,7 @@ collections:
     folder: "_projects"
     create: true
     slug: "{{fields.slug}}"
+    identifier_field: title
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "project" }
       - { label: "Title", name: "title", widget: "string" }
@@ -91,6 +92,7 @@ collections:
     folder: "_education"
     create: true
     slug: "{{degree}}"
+    identifier_field: degree
     fields:
       - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first" }
       - { label: "Degree", name: "degree", widget: "string", hint: "e.g., Master of Business Administration - MBA" }
@@ -111,6 +113,7 @@ collections:
     folder: "_experience"
     create: true
     slug: "{{title}}"
+    summary: "{{company}} - {{title}}"
     fields:
       - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first" }
       - { label: "Job Title", name: "title", widget: "string", hint: "e.g., Product and Operations MBA Intern" }
@@ -125,3 +128,21 @@ collections:
         fields:
           - { label: "Category", name: "category", widget: "string", hint: "e.g., Product Roadmap Definition" }
           - { label: "Description", name: "description", widget: "text", hint: "Detailed description of the responsibility" }
+
+  - name: "skills"
+    label: "Skills & Certifications"
+    folder: "_skills"
+    create: true
+    slug: "{{category_name}}"
+    identifier_field: category_name
+    fields:
+      - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first" }
+      - { label: "Category Name", name: "category_name", widget: "string", hint: "e.g., Product Management & Strategy" }
+      - { label: "Color Theme", name: "color", widget: "select", options: ["tan", "lavender"], default: "tan", hint: "Bubble color for skill tags" }
+      - label: "Skills"
+        name: "skills"
+        widget: "list"
+        required: false
+        hint: "Add individual skills or certifications"
+        fields:
+          - { label: "Skill/Certification", name: "name", widget: "string", hint: "e.g., Product Strategy & Development" }
