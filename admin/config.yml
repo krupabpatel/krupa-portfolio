@@ -18,10 +18,11 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "project" }
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string", hint: "URL-friendly name (e.g., 'my-project' becomes /projects/my-project/)", pattern: ['^[a-z0-9-]+$', "Only lowercase letters, numbers, and hyphens allowed"] }
       - { label: "Summary", name: "summary", widget: "text", hint: "Short description for project cards on homepage" }
       - { label: "Role", name: "role", widget: "string" }
       - { label: "Tools Used", name: "tools", widget: "list", allow_add: true, field: { label: "Tool", name: "tool", widget: "string" } }
-      - { label: "Content", name: "content", widget: "text", hint: "Main project description (plain text)" }
+      - { label: "Content", name: "body", widget: "markdown", hint: "Main project description" }
       - label: "Images"
         name: "images"
         widget: "list"

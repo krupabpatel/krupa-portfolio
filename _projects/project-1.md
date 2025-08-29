@@ -1,6 +1,7 @@
 ---
 layout: project
 title: E-commerce Checkout Optimization Test
+slug: project-1
 summary: Personal project analyzing checkout flows and creating improved user experiences through research and iteration.
 role: UX Researcher & Designer
 tools:
@@ -8,7 +9,6 @@ tools:
   - Figma
   - UserTesting.com
   - Miro
-content: This is a test
 links:
   - title: User Research Findings
     description: Comprehensive analysis of user behavior patterns and checkout flow pain points
@@ -24,4 +24,6 @@ media:
     alt: User interface wireframes and mockups
     caption: Wireframes and final designs for the optimized checkout experience
 ---
+
+This is a test
 

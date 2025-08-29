@@ -45,18 +45,12 @@ layout: default
         <p class="section-subtitle">Side projects exploring product management concepts, user research methodologies, and data-driven solutions I've developed to solve real-world problems.</p>
       </div>
       <div class="project-grid">
-        <div class="project-card" data-href="{{ '/project-1.html' | relative_url }}">
-          <h3>Project 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        {% for project in site.projects %}
+        <div class="project-card" data-href="{{ project.url | relative_url }}">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.summary }}</p>
         </div>
-        <div class="project-card" data-href="{{ '/project-template.html' | relative_url }}">
-          <h3>Project 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
-        <div class="project-card">
-          <h3>Project 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
