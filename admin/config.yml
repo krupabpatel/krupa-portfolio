@@ -33,14 +33,14 @@ collections:
             name: "image"
             fields:
               - { label: "Type", name: "type", widget: "hidden", default: "image" }
-              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Image", name: "src", widget: "image", media_folder: "/assets/images", public_folder: "/assets/images" }
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Caption", name: "caption", widget: "text", required: false }
           - label: "Video"
             name: "video"
             fields:
               - { label: "Type", name: "type", widget: "hidden", default: "video" }
-              - { label: "Video File", name: "src", widget: "file" }
+              - { label: "Video File", name: "src", widget: "file", media_folder: "/assets/videos", public_folder: "/assets/videos" }
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Caption", name: "caption", widget: "text", required: false }
           - label: "Figma Embed"
@@ -57,5 +57,5 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
-          - { label: "URL/File", name: "url", widget: "string", hint: "Upload a file or enter external URL" }
+          - { label: "File", name: "url", widget: "file", media_folder: "/assets/docs", public_folder: "/assets/docs" }
           - { label: "External Link", name: "external", widget: "boolean", default: false, hint: "Check if this is an external URL" }

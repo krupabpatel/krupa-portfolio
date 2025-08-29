@@ -73,7 +73,8 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - Proper separation of card preview vs. page content
 - Jekyll config updated to use slug-based permalinks
 - Unified `media` array supporting images, videos, and Figma embeds
-- File upload support for both media and document links
+- Organized file uploads: images → `/assets/images`, videos → `/assets/videos`, docs → `/assets/docs`
+- File upload widgets with external URL fallback options
 
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
