@@ -69,8 +69,11 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 ✅ **Dynamic Project System**
 - Homepage automatically generates project cards from `_projects` collection
 - Project cards display `summary` field, project pages display markdown `content`
-- URL slug field for customizable project URLs
+- URL slug field for customizable project URLs (e.g., `/projects/e-commerce-test/`)
 - Proper separation of card preview vs. page content
+- Jekyll config updated to use slug-based permalinks
+- Unified `media` array supporting images, videos, and Figma embeds
+- File upload support for both media and document links
 
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations

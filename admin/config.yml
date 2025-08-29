@@ -23,36 +23,39 @@ collections:
       - { label: "Role", name: "role", widget: "string" }
       - { label: "Tools Used", name: "tools", widget: "list", allow_add: true, field: { label: "Tool", name: "tool", widget: "string" } }
       - { label: "Content", name: "body", widget: "markdown", hint: "Main project description" }
-      - label: "Images"
-        name: "images"
+      - label: "Media"
+        name: "media"
         widget: "list"
         required: false
-        hint: "Upload images for the carousel"
-        fields:
-          - { label: "Image", name: "src", widget: "image" }
-          - { label: "Caption", name: "caption", widget: "text", required: false }
-      - label: "Videos"
-        name: "videos"
+        hint: "Images, videos, and Figma embeds for the carousel"
+        types:
+          - label: "Image"
+            name: "image"
+            fields:
+              - { label: "Type", name: "type", widget: "hidden", default: "image" }
+              - { label: "Image URL/Upload", name: "src", widget: "string", hint: "Upload a file or enter external image URL" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "text", required: false }
+          - label: "Video"
+            name: "video"
+            fields:
+              - { label: "Type", name: "type", widget: "hidden", default: "video" }
+              - { label: "Video URL/Upload", name: "src", widget: "string", hint: "Upload a file or enter external video URL" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "text", required: false }
+          - label: "Figma Embed"
+            name: "embed"
+            fields:
+              - { label: "Type", name: "type", widget: "hidden", default: "embed" }
+              - { label: "Figma Embed Code", name: "embed", widget: "text" }
+              - { label: "Caption", name: "caption", widget: "text", required: false }
+      - label: "Links"
+        name: "links"
         widget: "list"
         required: false
-        hint: "Upload videos for the carousel"
-        fields:
-          - { label: "Video File", name: "src", widget: "file" }
-          - { label: "Caption", name: "caption", widget: "text", required: false }
-      - label: "Figma Embeds"
-        name: "figma"
-        widget: "list"
-        required: false
-        hint: "Figma prototype links"
-        fields:
-          - { label: "Figma URL", name: "url", widget: "string" }
-          - { label: "Caption", name: "caption", widget: "text", required: false }
-      - label: "Documents"
-        name: "documents"
-        widget: "list"
-        required: false
-        hint: "Downloadable files and resources"
+        hint: "Downloadable files and resources (upload files or use external URLs)"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
-          - { label: "File", name: "file", widget: "file" }
+          - { label: "URL/File", name: "url", widget: "string", hint: "Upload a file or enter external URL" }
+          - { label: "External Link", name: "external", widget: "boolean", default: false, hint: "Check if this is an external URL" }
