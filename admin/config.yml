@@ -1,0 +1,53 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "_projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "project" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text", hint: "Short description for project cards on homepage" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Tools Used", name: "tools", widget: "list", allow_add: true, field: { label: "Tool", name: "tool", widget: "string" } }
+      - { label: "Content", name: "content", widget: "text", hint: "Main project description (plain text)" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        required: false
+        hint: "Upload images for the carousel"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "text", required: false }
+      - label: "Videos"
+        name: "videos"
+        widget: "list"
+        required: false
+        hint: "Upload videos for the carousel"
+        fields:
+          - { label: "Video File", name: "src", widget: "file" }
+          - { label: "Caption", name: "caption", widget: "text", required: false }
+      - label: "Figma Embeds"
+        name: "figma"
+        widget: "list"
+        required: false
+        hint: "Figma prototype links"
+        fields:
+          - { label: "Figma URL", name: "url", widget: "string" }
+          - { label: "Caption", name: "caption", widget: "text", required: false }
+      - label: "Documents"
+        name: "documents"
+        widget: "list"
+        required: false
+        hint: "Downloadable files and resources"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "File", name: "file", widget: "file" }
