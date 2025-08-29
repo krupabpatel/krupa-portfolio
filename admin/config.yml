@@ -33,14 +33,14 @@ collections:
             name: "image"
             fields:
               - { label: "Type", name: "type", widget: "hidden", default: "image" }
-              - { label: "Image URL/Upload", name: "src", widget: "string", hint: "Upload a file or enter external image URL" }
+              - { label: "Image", name: "src", widget: "image" }
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Caption", name: "caption", widget: "text", required: false }
           - label: "Video"
             name: "video"
             fields:
               - { label: "Type", name: "type", widget: "hidden", default: "video" }
-              - { label: "Video URL/Upload", name: "src", widget: "string", hint: "Upload a file or enter external video URL" }
+              - { label: "Video File", name: "src", widget: "file" }
               - { label: "Alt Text", name: "alt", widget: "string" }
               - { label: "Caption", name: "caption", widget: "text", required: false }
           - label: "Figma Embed"
