@@ -24,6 +24,8 @@ collections:
     output: false
   education:
     output: false
+  experience:
+    output: false
 
 # Defaults
 defaults:

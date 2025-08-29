@@ -82,8 +82,8 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - Image upload widget with proper asset folder organization
 
 ✅ **Homepage Sections CMS Integration**
-- Projects and Resume section subtitles now editable via Sveltia CMS
-- `_sections` collection contains single sections.md file for section subtitles
+- Projects, Resume, and Footer subtitles now editable via Sveltia CMS
+- `_sections` collection contains single sections.md file for all section subtitles
 - No URL slugs needed - maintains existing anchor link navigation
 - Text widget fields for easy subtitle editing
 
@@ -95,6 +95,15 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - Dynamic timeline generation sorted by display order
 - Existing education data migrated to CMS files: `cmu.md`, `uiuc.md`
 - Maintains timeline styling while enabling flexible content management
+
+✅ **Resume Experience Section CMS Integration**
+- Experience entries now managed through Sveltia CMS via `_experience` collection
+- Individual experience cards with fields: title, company, location, date_range, responsibilities
+- Dynamic category/description pairs for job responsibilities with bullet point rendering
+- Categories auto-formatted with bold text and colons in `<li>` elements
+- Dynamic timeline generation sorted by display order
+- Existing experience data migrated to CMS files: `nvidia.md`, `nttdata.md`
+- Maintains timeline and bullet point styling while enabling flexible content management
 
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations

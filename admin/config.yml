@@ -84,6 +84,7 @@ collections:
         fields:
           - { label: "Projects Subtitle", name: "projects_subtitle", widget: "text", hint: "Subtitle text under the Projects section" }
           - { label: "Resume Subtitle", name: "resume_subtitle", widget: "text", hint: "Subtitle text under the Resume section" }
+          - { label: "Footer Subtitle", name: "footer_subtitle", widget: "text", hint: "Subtitle text in the footer contact section" }
 
   - name: "education"
     label: "Education"
@@ -104,3 +105,23 @@ collections:
         fields:
           - { label: "Category", name: "category", widget: "string", hint: "e.g., Concentrations, Honors, Leadership" }
           - { label: "Body", name: "body", widget: "text", hint: "The description text for this category" }
+
+  - name: "experience"
+    label: "Experience" 
+    folder: "_experience"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first" }
+      - { label: "Job Title", name: "title", widget: "string", hint: "e.g., Product and Operations MBA Intern" }
+      - { label: "Company", name: "company", widget: "string", hint: "Company name and department" }
+      - { label: "Location", name: "location", widget: "string", hint: "City, State" }
+      - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g., June 2024 – August 2024" }
+      - label: "Responsibilities"
+        name: "responsibilities"
+        widget: "list"
+        required: false
+        hint: "Add category/description pairs for job responsibilities"
+        fields:
+          - { label: "Category", name: "category", widget: "string", hint: "e.g., Product Roadmap Definition" }
+          - { label: "Description", name: "description", widget: "text", hint: "Detailed description of the responsibility" }
