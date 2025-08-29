@@ -1,12 +1,12 @@
 # Krupa Portfolio Project
 
 ## Overview
-Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for content management.
+Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS for content management.
 
 ## Tech Stack
 - Jekyll (GitHub Pages)
 - HTML/CSS
-- Decap CMS
+- Sveltia CMS
 - Local Rinjani Sans fonts + Google Fonts (Funnel Display)
 
 ## Current Status
@@ -34,8 +34,7 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 
 ## Project Structure
 - `_layouts/project.html` - Jekyll template for project pages
-- `project-template.html` - Decap CMS baseline template
-- `project-1.html` - Example project implementation
+- `_projects/*.md` - Project content files managed by Sveltia CMS
 - `assets/images/favicon-*.png` - Multi-size favicon files (16, 32, 180, 192, 512px)
 - `favicon.ico`, `site.webmanifest` - Root-level favicon and PWA manifest
 - Hero, Projects, Resume, Footer sections on homepage
@@ -60,7 +59,7 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Decap CMS for
 - **Responsive**: Mobile-first with clamp() scaling
 
 ## Next Steps
-1. ✅ Configure Decap CMS - Dynamic project cards and content management
+1. ✅ Configure Sveltia CMS - Dynamic project cards and content management
 2. Add real project content
 3. SEO optimization
 4. Content editing workflow testing
