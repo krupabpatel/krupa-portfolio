@@ -20,6 +20,8 @@ collections:
     permalink: /:collection/:slug/
   hero:
     output: false
+  sections:
+    output: false
 
 # Defaults
 defaults:

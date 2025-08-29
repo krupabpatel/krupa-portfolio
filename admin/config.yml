@@ -74,3 +74,13 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "File", name: "url", widget: "file", media_folder: "/assets/docs", public_folder: "/assets/docs" }
           - { label: "External Link", name: "external", widget: "boolean", default: false, hint: "Check if this is an external URL" }
+
+  - name: "sections"
+    label: "Homepage Sections"
+    files:
+      - label: "Section Subtitles"
+        name: "sections"
+        file: "_sections/sections.md"
+        fields:
+          - { label: "Projects Subtitle", name: "projects_subtitle", widget: "text", hint: "Subtitle text under the Projects section" }
+          - { label: "Resume Subtitle", name: "resume_subtitle", widget: "text", hint: "Subtitle text under the Resume section" }

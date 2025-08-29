@@ -81,6 +81,12 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - Email field automatically gets `mailto:` prefix in rendered HTML
 - Image upload widget with proper asset folder organization
 
+✅ **Homepage Sections CMS Integration**
+- Projects and Resume section subtitles now editable via Sveltia CMS
+- `_sections` collection contains single sections.md file for section subtitles
+- No URL slugs needed - maintains existing anchor link navigation
+- Text widget fields for easy subtitle editing
+
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
 - **Jekyll Filters**: GitHub Pages asset path compatibility  
