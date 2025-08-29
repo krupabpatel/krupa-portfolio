@@ -1,8 +1,8 @@
 ---
 layout: project
 title: E-commerce Checkout Optimization Test
-slug: project-1
-summary: Personal project analyzing checkout flows and creating improved user experiences through research and iteration.
+slug: e-commerce-test
+summary: This is a test of a first project
 role: UX Researcher & Designer
 tools:
   - Google Analytics
@@ -24,6 +24,4 @@ media:
     alt: User interface wireframes and mockups
     caption: Wireframes and final designs for the optimized checkout experience
 ---
-
 This is a test
-
