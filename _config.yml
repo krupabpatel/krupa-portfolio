@@ -18,6 +18,8 @@ collections:
   projects:
     output: true
     permalink: /:collection/:slug/
+  hero:
+    output: false
 
 # Defaults
 defaults:

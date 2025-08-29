@@ -10,6 +10,19 @@ media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
+  - name: "hero"
+    label: "Hero Section"
+    folder: "_hero"
+    create: false
+    delete: false
+    fields:
+      - { label: "Hero Title", name: "title", widget: "string" }
+      - { label: "Hero Subtitle", name: "subtitle", widget: "text" }
+      - { label: "Profile Image", name: "image", widget: "image", media_folder: "/assets/images", public_folder: "/assets/images" }
+      - { label: "Image Alt Text", name: "image_alt", widget: "string" }
+      - { label: "Connect URL (LinkedIn)", name: "connect_url", widget: "string" }
+      - { label: "Contact Email", name: "contact_email", widget: "string" }
+
   - name: "projects"
     label: "Projects"
     folder: "_projects"

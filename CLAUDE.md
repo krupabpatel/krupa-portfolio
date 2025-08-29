@@ -75,6 +75,12 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - Organized file uploads: images → `/assets/images`, videos → `/assets/videos`, docs → `/assets/docs`
 - File upload widgets with external URL fallback options
 
+✅ **Hero Section CMS Integration**
+- Hero title, subtitle, profile image, and contact links now editable via Sveltia CMS
+- `_hero` collection contains single hero.md file for homepage content
+- Email field automatically gets `mailto:` prefix in rendered HTML
+- Image upload widget with proper asset folder organization
+
 ## Key Technical Features
 - **Intersection Observer**: Scroll-triggered animations
 - **Jekyll Filters**: GitHub Pages asset path compatibility  
