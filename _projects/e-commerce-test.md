@@ -36,4 +36,14 @@ links:
     url: https://example.com/demo
     external: true
 ---
-This is a test
+# Overview
+This is a comprehensive test of the header functionality and text wrapping behavior within the project content area. We need to see how longer paragraphs flow and wrap within the container, ensuring that the line height and spacing work well across multiple lines of content. This paragraph should be long enough to demonstrate proper text wrapping and readability.
+
+# Key Features
+We can now add multiple sections with headers to organize the project content better. Each section can contain substantial amounts of text that will naturally wrap to multiple lines. This allows for detailed explanations of project features, methodologies, results, and conclusions. The text should maintain good readability even when spanning several lines, with appropriate spacing between lines and sections.
+
+# Implementation Details
+The implementation involved careful consideration of typography, spacing, and visual hierarchy. Headers use the Rinjani Sans font family to maintain consistency with other design elements throughout the portfolio. Body text uses Funnel Display for optimal readability. Line height has been optimized to ensure comfortable reading while maintaining visual density.
+
+# Results
+The styling should match the Rinjani font used elsewhere in the design, creating a cohesive visual experience. This longer text block demonstrates how the content flows naturally, with proper line breaks and spacing that makes the content easy to scan and read. The headers provide clear section breaks while maintaining the overall design aesthetic.

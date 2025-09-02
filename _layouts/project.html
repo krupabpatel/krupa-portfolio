@@ -295,14 +295,28 @@ layout: default
 .project-content {
   font-family: 'Funnel Display', sans-serif;
   font-size: 1.25rem;
-  line-height: 1.6;
+  line-height: 1.3;
   color: #6B645C;
-  font-style: italic;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  font-style: normal;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .project-content p {
   margin: 0;
+}
+
+.project-content h1 {
+  font-family: 'Rinjani Sans', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #2B2922;
+  font-style: normal;
+  margin: 2rem 0 1rem 0;
+}
+
+.project-content h1:first-child {
+  margin-top: 0;
 }
 
 .project-media {
@@ -472,12 +486,13 @@ layout: default
 }
 
 .carousel-btn:hover {
-  background: rgba(139, 149, 109, 1);
+  background: #A594B8;
   transform: translateY(-0.125rem) scale(1.05);
-  box-shadow: 0 0.5rem 1.5rem rgba(139, 149, 109, 0.4);
+  box-shadow: 0 0.5rem 1.5rem rgba(165, 148, 184, 0.4);
 }
 
 .carousel-btn:active {
+  background: #A594B8;
   transform: translateY(0) scale(0.98);
 }
 
@@ -517,7 +532,7 @@ layout: default
 }
 
 .dot:hover:not(.active) {
-  background: rgba(139, 149, 109, 0.6);
+  background: rgba(165, 148, 184, 0.6);
   transform: scale(1.1);
 }
 
