@@ -3,7 +3,7 @@
 A sophisticated portfolio website showcasing an earthy design system with scroll-triggered animations and comprehensive content management.
 
 ## 🌐 Live Site
-**Production**: https://krupabpatel.github.io/krupa-portfolio/
+**Production**: https://kroops.me/
 
 ## 🛠️ Technical Stack
 - **Framework**: Jekyll (GitHub Pages)
