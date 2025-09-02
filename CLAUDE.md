@@ -31,7 +31,7 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - **Animation**: Scroll-triggered reveals, fade transitions, mobile-first
 
 ## Complete CMS Integration ✅
-- **Projects**: `_projects` collection with slug URLs, summary/content separation, media carousel (images/videos/Figma), link icons (document/GitHub/hyperlink), reverse order sorting (higher numbers first)
+- **Projects**: `_projects` collection with slug URLs, summary/content separation, media carousel (images/videos/Figma), link icons (document/GitHub/hyperlink/figma), reverse order sorting (higher numbers first)
 - **Hero**: `_hero` collection with title/subtitle/image/contacts
 - **Sections**: `_sections` collection for subtitle management  
 - **Education**: `_education` collection with timeline, category/body pairs
@@ -42,6 +42,6 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - **Animations**: Intersection Observer scroll triggers, touch events, lavender carousel hovers
 - **Jekyll**: GitHub Pages asset path filters, custom properties
 - **Media**: Responsive carousel with controls, organized uploads
-- **Icons**: Document/GitHub/hyperlink SVG system for project links
+- **Icons**: Document/GitHub/hyperlink/figma SVG system for project links
 - **Typography**: Project content headers (Rinjani Sans), proper paragraph spacing, line height optimization
 - **Content**: Markdown header support with visual hierarchy
