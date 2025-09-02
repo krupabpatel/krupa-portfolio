@@ -63,7 +63,7 @@ collections:
             name: "embed"
             fields:
               - { label: "Type", name: "type", widget: "hidden", default: "embed" }
-              - { label: "Figma Embed Code", name: "embed", widget: "text" }
+              - { label: "Figma URL", name: "figma_url", widget: "string", hint: "Paste any Figma URL (file view or prototype view)" }
               - { label: "Caption", name: "caption", widget: "text", required: false }
       - label: "Links"
         name: "links"
