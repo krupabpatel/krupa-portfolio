@@ -22,8 +22,18 @@ media:
 links:
   - title: This is a testdocument
     description: Test document
-    icon_type: hyperlink
+    icon_type: document
     url: /assets/images/profile.jpg
     external: false
+  - title: GitHub Repository
+    description: View source code
+    icon_type: github
+    url: https://github.com/example/repo
+    external: true
+  - title: Live Demo
+    description: Try the application
+    icon_type: hyperlink
+    url: https://example.com/demo
+    external: true
 ---
 This is a test
