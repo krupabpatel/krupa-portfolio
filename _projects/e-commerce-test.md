@@ -22,6 +22,7 @@ media:
 links:
   - title: This is a testdocument
     description: Test document
+    icon_type: github
     url: /assets/images/profile.jpg
     external: false
 ---
