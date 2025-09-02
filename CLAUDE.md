@@ -4,120 +4,42 @@
 Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS for content management.
 
 ## Tech Stack
-- Jekyll (GitHub Pages)
-- HTML/CSS
-- Sveltia CMS
+- Jekyll (GitHub Pages), HTML/CSS, Sveltia CMS
 - Local Rinjani Sans fonts + Google Fonts (Funnel Display)
 
-## Current Status
-✅ **Complete Portfolio Implementation**
-- Full-width earthy design with sophisticated animations
-- Mobile-responsive with hamburger menu and touch animations
-- Hero section with profile picture, Connect/Contact buttons
-- Project cards with hover effects and scroll-triggered animations
-- Professional footer with glass morphism styling
-- Navbar with social icons and smooth navigation
-- Complete Resume section with timeline and skills grid
-- Project template system with media carousel and document links
-- Universal fade page transitions
-- Scroll-triggered animations on both desktop and mobile
-- Complete favicon system with multi-platform support
+## Status: Complete Portfolio Implementation ✅
+- **Design**: Full-width earthy palette (Sand #E4D5B7, Sage #8B956D, Lavender #A594B8), sophisticated animations
+- **Mobile**: Responsive with hamburger menu, touch animations, clamp() scaling
+- **Homepage**: Hero section, project cards with hover effects, resume timeline, skills grid, glass morphism footer
+- **Navigation**: Smooth scrolling, fade transitions, social icons
+- **Projects**: Template system with media carousel, multiple icon types for links
+- **Favicon**: Multi-platform support (16-512px, ICO, web manifest)
 
-## Key Features Completed
-- **Design System**: Earthy color palette (Sand #E4D5B7, Sage #8B956D, Lavender #A594B8)
-- **Typography**: Rinjani Sans headlines + Funnel Display body text
-- **Animations**: Scroll-triggered reveals, hover effects, touch animations
-- **Navigation**: Smooth scrolling, fade transitions, mobile menu
-- **Content Management**: Jekyll layouts, front matter schemas, CMS-ready templates
-- **Mobile UX**: Touch animations, responsive scaling, hamburger menu
-- **Favicon System**: Multi-size support (16px, 32px, 180px, 192px, 512px), ICO format, web manifest
-
-## Project Structure
-- `_layouts/project.html` - Jekyll template for project pages
-- `_projects/*.md` - Project content files managed by Sveltia CMS
-- `assets/images/favicon-*.png` - Multi-size favicon files (16, 32, 180, 192, 512px)
-- `favicon.ico`, `site.webmanifest` - Root-level favicon and PWA manifest
-- Hero, Projects, Resume, Footer sections on homepage
-
-## Commands
-### Development
+## Development Commands
 ```bash
+# Local development
 /opt/homebrew/lib/ruby/gems/3.4.0/bin/jekyll serve --config _config.yml,_config_dev.yml --force_polling
+
+# Ruby setup (ARM64 Mac)
+/opt/homebrew/opt/ruby/bin/gem install eventmachine -v '1.2.7' -- --with-cppflags="-I$(brew --prefix)/include -I$(xcrun --show-sdk-path)/usr/include/c++/v1" --with-ldflags="-L$(brew --prefix)/lib"
 ```
 - Local: http://127.0.0.1:4000/
 - Production: https://krupabpatel.github.io/krupa-portfolio/
 
-### Ruby Setup (ARM64 Mac)
-```bash
-/opt/homebrew/opt/ruby/bin/gem install eventmachine -v '1.2.7' -- --with-cppflags="-I$(brew --prefix)/include -I$(xcrun --show-sdk-path)/usr/include/c++/v1" --with-ldflags="-L$(brew --prefix)/lib"
-```
-
 ## Design Guidelines
-- **CSS Units**: Use rem/em, avoid px except for hairline borders
-- **Color Rules**: Lavender only for accents, never mixed in gradients
-- **Animation**: Scroll-triggered reveals, fade transitions, touch feedback
-- **Responsive**: Mobile-first with clamp() scaling
+- **CSS**: rem/em units, lavender accents only, no gradient mixing
+- **Animation**: Scroll-triggered reveals, fade transitions, mobile-first
 
-## Next Steps
-1. ✅ Configure Sveltia CMS - Dynamic project cards and content management
-2. Add real project content
-3. SEO optimization
-4. Content editing workflow testing
+## Complete CMS Integration ✅
+- **Projects**: `_projects` collection with slug URLs, summary/content separation, media carousel (images/videos/Figma), link icons (document/GitHub/hyperlink)
+- **Hero**: `_hero` collection with title/subtitle/image/contacts
+- **Sections**: `_sections` collection for subtitle management  
+- **Education**: `_education` collection with timeline, category/body pairs
+- **Experience**: `_experience` collection with responsibilities, bullet rendering
+- **Skills**: `_skills` collection with color themes (tan/lavender), tag generation
 
-## CMS Integration Status
-✅ **Dynamic Project System**
-- Homepage automatically generates project cards from `_projects` collection
-- Project cards display `summary` field, project pages display markdown `content`
-- URL slug field for customizable project URLs (e.g., `/projects/e-commerce-test/`)
-- Proper separation of card preview vs. page content
-- Jekyll config updated to use slug-based permalinks
-- Unified `media` array supporting images, videos, and Figma embeds
-- Organized file uploads: images → `/assets/images`, videos → `/assets/videos`, docs → `/assets/docs`
-- File upload widgets with external URL fallback options
-
-✅ **Hero Section CMS Integration**
-- Hero title, subtitle, profile image, and contact links now editable via Sveltia CMS
-- `_hero` collection contains single hero.md file for homepage content
-- Email field automatically gets `mailto:` prefix in rendered HTML
-- Image upload widget with proper asset folder organization
-
-✅ **Homepage Sections CMS Integration**
-- Projects, Resume, and Footer subtitles now editable via Sveltia CMS
-- `_sections` collection contains single sections.md file for all section subtitles
-- No URL slugs needed - maintains existing anchor link navigation
-- Text widget fields for easy subtitle editing
-
-✅ **Resume Education Section CMS Integration**
-- Education entries now managed through Sveltia CMS via `_education` collection
-- Individual education cards with fields: degree, institution, location, graduation_date, details
-- Dynamic category/body pairs for education details (e.g., Concentrations, Honors, Leadership)
-- Categories auto-formatted with bold text and colons in template
-- Dynamic timeline generation sorted by display order
-- Existing education data migrated to CMS files: `cmu.md`, `uiuc.md`
-- Maintains timeline styling while enabling flexible content management
-
-✅ **Resume Experience Section CMS Integration**
-- Experience entries now managed through Sveltia CMS via `_experience` collection
-- Individual experience cards with fields: title, company, location, date_range, responsibilities
-- Dynamic category/description pairs for job responsibilities with bullet point rendering
-- Categories auto-formatted with bold text and colons in `<li>` elements
-- Dynamic timeline generation sorted by display order
-- Existing experience data migrated to CMS files: `nvidia.md`, `nttdata.md`
-- Maintains timeline and bullet point styling while enabling flexible content management
-
-✅ **Resume Skills & Certifications Section CMS Integration**
-- Skills categories now managed through Sveltia CMS via `_skills` collection
-- Individual skill category cards with fields: category_name, color (tan/lavender), skills list
-- Dynamic skill tag generation with customizable colors
-- List order preservation - skills display in CMS list order
-- Existing skills data migrated to individual category files: `product-management.md`, `analytics-data.md`, `technical-tools.md`, `certifications.md`
-- Lavender color option for certifications, tan for regular skills
-- Maintains grid layout and tag styling while enabling flexible content management
-
-## Key Technical Features
-- **Intersection Observer**: Scroll-triggered animations
-- **Jekyll Filters**: GitHub Pages asset path compatibility  
-- **CSS Custom Properties**: Dynamic navbar height
-- **Touch Events**: Mobile interaction animations
-- **Document Links**: Professional project resource system
-- **Multi-Platform Favicons**: Cross-browser/device compatibility with PWA support
+## Technical Features
+- **Animations**: Intersection Observer scroll triggers, touch events
+- **Jekyll**: GitHub Pages asset path filters, custom properties
+- **Media**: Responsive carousel with controls, organized uploads
+- **Icons**: Document/GitHub/hyperlink SVG system for project links

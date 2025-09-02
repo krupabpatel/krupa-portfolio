@@ -73,6 +73,7 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
+          - { label: "Icon Type", name: "icon_type", widget: "select", options: ["document", "github", "hyperlink"], default: "document", hint: "Choose the icon to display" }
           - { label: "File", name: "url", widget: "file", media_folder: "/assets/docs", public_folder: "/assets/docs" }
           - { label: "External Link", name: "external", widget: "boolean", default: false, hint: "Check if this is an external URL" }
 
