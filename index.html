@@ -47,7 +47,7 @@ layout: default
         <p class="section-subtitle">{{ sections_data.projects_subtitle }}</p>
       </div>
       <div class="project-grid">
-        {% assign sorted_projects = site.projects | sort: 'order' %}
+        {% assign sorted_projects = site.projects | sort: 'order' | reverse %}
         {% for project in sorted_projects %}
         <div class="project-card" data-href="{{ project.url | relative_url }}">
           <h3>{{ project.title }}</h3>
