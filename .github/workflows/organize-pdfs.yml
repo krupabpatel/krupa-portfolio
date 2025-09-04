@@ -1,0 +1,63 @@
+name: Organize PDFs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  organize-pdfs:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[via-sveltia]')
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Organize PDFs
+      run: |
+        echo "Checking for PDFs in assets/images..."
+        
+        # Check if any PDFs exist in assets/images
+        if ls assets/images/*.pdf 1> /dev/null 2>&1; then
+          echo "Found PDF(s) in assets/images, moving to assets/docs..."
+          
+          # Create docs directory if it doesn't exist
+          mkdir -p assets/docs
+          
+          # Track if any files were moved
+          MOVED_FILES=false
+          
+          # Move each PDF and update references
+          for pdf in assets/images/*.pdf; do
+            if [[ -f "$pdf" ]]; then
+              # Get the filename
+              filename=$(basename "$pdf")
+              
+              # Move the file
+              mv "$pdf" "assets/docs/$filename"
+              echo "Moved: $pdf → assets/docs/$filename"
+              
+              # Update references in markdown files
+              find _projects -name "*.md" -exec sed -i "s|/assets/images/$filename|/assets/docs/$filename|g" {} \;
+              find . -maxdepth 1 -name "*.md" -exec sed -i "s|/assets/images/$filename|/assets/docs/$filename|g" {} \;
+              
+              echo "Updated references from $filename"
+              MOVED_FILES=true
+            fi
+          done
+          
+          # Commit and push changes if files were moved
+          if [[ "$MOVED_FILES" == true ]]; then
+            git config --local user.email "krupa.b.patel@outlook.com"
+            git config --local user.name "Krupa Patel"
+            git add .
+            git commit --amend --no-edit
+            git push --force-with-lease
+            echo "Organized PDFs and updated original commit"
+          fi
+        else
+          echo "No PDFs found in assets/images"
+        fi
