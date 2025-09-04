@@ -35,7 +35,7 @@ layout: default
         {{ content }}
       </div>
       
-      {% if page.media %}
+      {% if page.media and page.media.size > 0 %}
       <div class="project-media">
         <div class="media-carousel">
           <div class="media-track" id="mediaTrack">
