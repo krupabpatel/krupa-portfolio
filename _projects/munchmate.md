@@ -21,8 +21,8 @@ links:
     icon_type: document
     url: /assets/docs/munchmate_mvp.pdf
     external: false
-  - title: TODO
-    description: TODO
+  - title: MunchMate Figma Prototype
+    description: Interactive prototype showcasing the complete user flow and design system
     icon_type: figma
     url: https://www.figma.com/proto/vnuZl9Zu10jU9FVq84Ld9z/MunchMate?node-id=1-3
     external: true
