@@ -3,7 +3,7 @@ layout: project
 title: Boyfriend Mode
 slug: boyfriend-mode
 order: 3
-summary: An iOS app concept that provides instant photography assessment using AI, helping users improve their photo skills through real-time feedback and educational guidance.
+summary: An iOS app concept that provides instant photography assessment using AI, helping users improve their photo skills through real-time feedback and educational guidance
 role: Product Manager & Product Designer
 tools:
   - Figma

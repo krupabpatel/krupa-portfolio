@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Vibecoded Portfolio Site
+title: Portfolio Site
 slug: portfolio-site
 order: 1
 summary: Built a modern portfolio website using vibecoding techniques with AI-powered development tools and headless CMS integration
