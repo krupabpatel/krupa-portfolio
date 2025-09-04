@@ -26,6 +26,9 @@ jobs:
       run: |
         echo "Running PDF organization..."
         
+        # Initialize variables
+        CLEANUP_MADE=false
+        
         # Function to clean up orphaned PDFs
         cleanup_orphaned_pdfs() {
           echo "Checking for orphaned PDFs in assets/docs..."
@@ -36,6 +39,7 @@ jobs:
               if ! grep -r "/assets/docs/$filename" _projects/ . --include="*.md" > /dev/null 2>&1; then
                 echo "Removing orphaned PDF: $filename"
                 rm "$pdf"
+                CLEANUP_MADE=true
               fi
             done
           fi
@@ -75,15 +79,22 @@ jobs:
             fi
           done
           
-          # Commit and push changes if files were moved
+          # Track if files were moved
           if [[ "$MOVED_FILES" == true ]]; then
-            git config --local user.email "krupa.b.patel@outlook.com"
-            git config --local user.name "Krupa Patel"
-            git add .
-            git commit --amend --no-edit
-            git push --force-with-lease
-            echo "Organized PDFs and updated original commit"
+            echo "Files were moved from assets/images"
           fi
         else
           echo "No PDFs found in assets/images"
+        fi
+        
+        # Commit and push changes if files were moved or cleanup was made
+        if [[ "$MOVED_FILES" == true ]] || [[ "$CLEANUP_MADE" == true ]]; then
+          git config --local user.email "krupa.b.patel@outlook.com"
+          git config --local user.name "Krupa Patel"
+          git add .
+          git commit --amend --no-edit
+          git push --force-with-lease
+          echo "Organized PDFs and updated original commit"
+        else
+          echo "No PDF organization changes were needed"
         fi
