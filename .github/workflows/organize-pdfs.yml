@@ -6,6 +6,9 @@ on:
 
 run-name: "Organize PDFs Action: ${{ github.event.head_commit.message }}"
 
+permissions:
+  contents: write
+
 jobs:
   organize-pdfs:
     runs-on: ubuntu-latest
@@ -17,6 +20,7 @@ jobs:
       with:
         fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
+        persist-credentials: true
 
     - name: Organize PDFs
       run: |
