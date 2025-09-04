@@ -18,6 +18,26 @@ jobs:
 
     - name: Organize PDFs
       run: |
+        echo "Running PDF organization..."
+        
+        # Function to clean up orphaned PDFs
+        cleanup_orphaned_pdfs() {
+          echo "Checking for orphaned PDFs in assets/docs..."
+          if ls assets/docs/*.pdf 1> /dev/null 2>&1; then
+            for pdf in assets/docs/*.pdf; do
+              filename=$(basename "$pdf")
+              # Check if this PDF is referenced in any markdown files
+              if ! grep -r "/assets/docs/$filename" _projects/ . --include="*.md" > /dev/null 2>&1; then
+                echo "Removing orphaned PDF: $filename"
+                rm "$pdf"
+              fi
+            done
+          fi
+        }
+        
+        # Clean up orphaned PDFs first
+        cleanup_orphaned_pdfs
+        
         echo "Checking for PDFs in assets/images..."
         
         # Check if any PDFs exist in assets/images
