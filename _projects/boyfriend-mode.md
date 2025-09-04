@@ -8,6 +8,11 @@ role: TODO
 tools:
   - TODO
 media: []
-links: []
+links:
+  - title: Boyfriend Mode MVP Document
+    description: TODO
+    icon_type: document
+    url: /assets/docs/boyfriend_mode_mvp.pdf
+    external: false
 ---
 TODO
