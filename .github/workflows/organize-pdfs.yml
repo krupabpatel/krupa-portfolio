@@ -4,6 +4,8 @@ on:
   push:
     branches: [ main ]
 
+run-name: "Organize PDFs Action: ${{ github.event.head_commit.message }}"
+
 jobs:
   organize-pdfs:
     runs-on: ubuntu-latest
