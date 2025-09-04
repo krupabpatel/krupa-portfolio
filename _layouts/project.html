@@ -31,10 +31,6 @@ layout: default
 
   <section class="project-body">
     <div class="container">
-      <div class="project-content">
-        {{ content }}
-      </div>
-      
       {% if page.media and page.media.size > 0 %}
       <div class="project-media">
         <div class="media-carousel">
@@ -90,6 +86,10 @@ layout: default
         {% endif %}
       </div>
       {% endif %}
+      
+      <div class="project-content">
+        {{ content }}
+      </div>
       
       {% if page.links %}
       <div class="project-links">
@@ -333,7 +333,7 @@ layout: default
 }
 
 .project-media {
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .media-carousel {
