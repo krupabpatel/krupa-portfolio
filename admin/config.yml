@@ -5,6 +5,10 @@ backend:
   branch: main
   base_url: https://cms-auth-proxy-kroops.anshuldesai.workers.dev
   auth_endpoint: auth
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}" [via-sveltia]'
+    update: 'Update {{collection}} "{{slug}}" [via-sveltia]'
+    delete: 'Delete {{collection}} "{{slug}}" [via-sveltia]'
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -74,7 +78,7 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Icon Type", name: "icon_type", widget: "select", options: ["document", "github", "hyperlink", "figma"], default: "document", hint: "Choose the icon to display" }
-          - { label: "File", name: "url", widget: "file", media_folder: "/assets/docs", public_folder: "/assets/docs" }
+          - { label: "File", name: "url", widget: "file", media_folder: "/assets/docs", public_folder: "/assets/docs", media_library: { config: { multiple: false } } }
           - { label: "External Link", name: "external", widget: "boolean", default: false, hint: "Check if this is an external URL" }
 
   - name: "sections"

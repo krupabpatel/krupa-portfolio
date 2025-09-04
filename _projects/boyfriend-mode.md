@@ -12,7 +12,7 @@ links:
   - title: Boyfriend Mode High Level MVP
     description: TODO
     icon_type: document
-    url: /assets/images/Boyfriend_Mode_MVP.pdf
+    url: /assets/docs/boyfriend_mode_mvp.pdf
     external: false
 ---
 TODO

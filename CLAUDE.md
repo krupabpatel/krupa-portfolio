@@ -37,6 +37,7 @@ Portfolio website for Krupa hosted on GitHub Pages with Jekyll and Sveltia CMS f
 - **Education**: `_education` collection with timeline, category/body pairs
 - **Experience**: `_experience` collection with responsibilities, bullet rendering
 - **Skills**: `_skills` collection with color themes (tan/lavender), tag generation
+- **PDF Organization**: Git post-commit hook auto-moves PDFs from `assets/images` to `assets/docs`, lowercases filenames, updates references; squashes commits for local (no push) vs Sveltia commits (auto-push)
 
 ## Technical Features
 - **Animations**: Intersection Observer scroll triggers, touch events, lavender carousel hovers
